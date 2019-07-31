@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Data.Entity;
+using testtask_v1.Models;
 
 namespace testtask_v1
 {
@@ -11,6 +13,8 @@ namespace testtask_v1
     {
         protected void Application_Start()
         {
+            Database.SetInitializer(new ProductDbInitializer());
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
