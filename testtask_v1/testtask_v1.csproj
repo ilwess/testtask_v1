@@ -104,6 +104,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -115,7 +116,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Customers\Add\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\Products\Details\" />
     <Folder Include="Views\Products\List\" />
   </ItemGroup>
