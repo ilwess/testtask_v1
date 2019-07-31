@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using testtask_v1.Models;
 
 namespace testtask_v1.Controllers
 {
@@ -13,10 +14,19 @@ namespace testtask_v1.Controllers
         {
             return "Customers.Index";
         }
-
+        [HttpGet]
         public ViewResult Add()
         {
             return View();
         }
+
+        [HttpPost]
+        public string Add(Product prod)
+        {
+            
+            return "Product was added";
+        }
+
+
     }
 }

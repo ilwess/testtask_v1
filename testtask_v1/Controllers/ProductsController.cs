@@ -24,7 +24,7 @@ namespace testtask_v1.Controllers
 
         public ViewResult List()
         {
-            IEnumerable<Product> products = 
+            IEnumerable<Product> products = pc.Prods;
 
             ViewBag.prods = products;
             

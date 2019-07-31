@@ -7,6 +7,8 @@ namespace testtask_v1.Models
 {
     public class Product
     {
+        private static int idIncrementer = 0;
+
         private int id;
         private string name;
         private double price;
@@ -36,9 +38,10 @@ namespace testtask_v1.Models
             private set { description = value; }
         }
 
-        public Product(int id, string name, double price, string descr)
+        public Product(string name, double price, string descr)
         {
-            this.id = id;
+            this.id = idIncrementer;
+            idIncrementer++;
             this.name = name;
             this.price = price;
             this.description = descr;
