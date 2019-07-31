@@ -9,9 +9,11 @@ namespace testtask_v1.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public string Index()
+        public ViewResult Index()
         {
-            return "ayy lmao";
+            float pi = 0;
+            ViewBag.Number = pi;
+            return View();
         }
     }
 }

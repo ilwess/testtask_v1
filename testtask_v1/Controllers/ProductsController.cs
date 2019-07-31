@@ -19,9 +19,9 @@ namespace testtask_v1.Controllers
             return "Products.Details";
         }
 
-        public string List()
+        public ViewResult List()
         {
-            return "Products.List";
+            return View();
         }
     }
 }
