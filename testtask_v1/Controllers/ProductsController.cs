@@ -30,16 +30,16 @@ namespace testtask_v1.Controllers
                 new Models.Product(4, "Right and left plastic legs", 19, "nice set of legs with discount"),
             };
 
-            string table = "Name        Price           Description" + Environment.NewLine;
+            //string table = "Name        Price           Description" + Environment.NewLine;
 
-            foreach(Models.Product prod in products)
-            {
-                table += prod.Name + "      ";
-                table += prod.Price + "      ";
-                table += prod.Description + Environment.NewLine;
-            }
+            //foreach(Models.Product prod in products)
+            //{
+            //    table += prod.Name + "      ";
+            //    table += prod.Price + "      ";
+            //    table += prod.Description + Environment.NewLine;
+            //}
 
-            ViewBag.prodTable = table;
+            ViewBag.prods = products;
             
             return View();
         }
