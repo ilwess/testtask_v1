@@ -14,9 +14,9 @@ namespace testtask_v1.Controllers
             return "Customers.Index";
         }
 
-        public string Add()
+        public ViewResult Add()
         {
-            return "Customers.Add";
+            return View();
         }
     }
 }
