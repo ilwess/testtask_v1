@@ -114,7 +114,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Home\" />
-    <Folder Include="Views\Products\" />
+    <Folder Include="Views\Products\Details\" />
+    <Folder Include="Views\Products\List\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

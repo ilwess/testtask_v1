@@ -13,5 +13,15 @@ namespace testtask_v1.Controllers
         {
             return "Products.Index";
         }
+
+        public string Details()
+        {
+            return "Products.Details";
+        }
+
+        public string List()
+        {
+            return "Products.List";
+        }
     }
 }
