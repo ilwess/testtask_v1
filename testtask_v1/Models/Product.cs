@@ -17,25 +17,25 @@ namespace testtask_v1.Models
         public int Id
         {
             get { return id; }
-            private set { id = value; }
+            set { id = value; }
         }
 
         public string Name
         {
             get { return name; }
-            private set { name = value; }
+            set { name = value; }
         }
 
         public double Price
         {
             get { return price; }
-            private set { price = value; }
+            set { price = value; }
         }
 
         public string Description
         {
             get { return description; }
-            private set { description = value; }
+            set { description = value; }
         }
 
         public Product(string name, double price, string descr)
@@ -45,6 +45,12 @@ namespace testtask_v1.Models
             this.name = name;
             this.price = price;
             this.description = descr;
+        }
+
+        public Product()
+        {
+            this.id = idIncrementer;
+            idIncrementer++;
         }
     }
 }

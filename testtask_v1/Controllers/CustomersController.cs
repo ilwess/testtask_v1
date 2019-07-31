@@ -9,7 +9,7 @@ namespace testtask_v1.Controllers
 {
     public class CustomersController : Controller
     {
-        // GET: Customers
+        ProductContext pc = new ProductContext();
         public string Index()
         {
             return "Customers.Index";
@@ -23,7 +23,8 @@ namespace testtask_v1.Controllers
         [HttpPost]
         public string Add(Product prod)
         {
-            
+            pc.Prods.Add(prod);
+            pc.SaveChanges();
             return "Product was added";
         }
 
