@@ -8,6 +8,7 @@ using System.Data.Entity;
 using testtask_v1.Models;
 using System.Net.Mail;
 using System.Net;
+using System.IO;
 
 namespace testtask_v1
 {
@@ -32,14 +33,17 @@ namespace testtask_v1
         protected void Application_Error()
         {
             Exception ex = Server.GetLastError();
+            
             string messageSubject = "Error";
             string messageBody = ex.Message;
+
             SmtpClient client = new SmtpClient("smtp.mail.ru", 587);
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential("pasha.vrublevskiy20@list.ru", "ExortinvokeR122");
+            client.Credentials = new NetworkCredential("", "");
             client.EnableSsl = true;
             client.Timeout = 10000;
+
             MailAddress from = new MailAddress(email);
             MailAddress to = new MailAddress(email);
             MailMessage mailMsg = new MailMessage(from, to);
