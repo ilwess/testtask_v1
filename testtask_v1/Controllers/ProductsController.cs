@@ -30,5 +30,19 @@ namespace testtask_v1.Controllers
             
             return View();
         }
+
+        [HttpGet]
+        public ViewResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public string Add(Product prod)
+        {
+            pc.Prods.Add(prod);
+            pc.SaveChanges();
+            return "Product was added";
+        }
     }
 }
