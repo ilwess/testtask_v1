@@ -9,24 +9,11 @@ namespace testtask_v1.Controllers
 {
     public class CustomersController : Controller
     {
-        ProductContext pc = new ProductContext();
         public string Index()
         {
             return "Customers.Index";
         }
-        [HttpGet]
-        public ViewResult Add()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public string Add(Product prod)
-        {
-            pc.Prods.Add(prod);
-            pc.SaveChanges();
-            return "Product was added";
-        }
+        
 
 
     }

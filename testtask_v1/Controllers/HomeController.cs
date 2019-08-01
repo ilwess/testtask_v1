@@ -15,5 +15,10 @@ namespace testtask_v1.Controllers
             ViewBag.Number = pi;
             return View();
         }
+
+        public string QueryCount()
+        {
+            return MvcApplication.queryCount.ToString();
+        }
     }
 }

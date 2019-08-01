@@ -115,7 +115,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Products\List.cshtml" />
-    <Content Include="Views\Customers\Add.cshtml" />
+    <Content Include="Views\Products\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -125,9 +125,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Customers\Add\" />
-    <Folder Include="Views\Products\Details\" />
-    <Folder Include="Views\Products\List\" />
+    <Folder Include="Views\Customers\" />
+    <Folder Include="Views\Home\QueryCount\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
