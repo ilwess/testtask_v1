@@ -1,0 +1,29 @@
+[33mcommit 12c111abe1c69c47108eafd5ea54fbb80fe133de[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: ilwess <pasha.vrublevskiy20@list.ru>
+Date:   Wed Jul 31 12:35:42 2019 +0300
+
+    modify products controller
+
+[33mcommit 0795b5090b1169f37c42b57d6e1564ef96062fcc[m
+Author: ilwess <pasha.vrublevskiy20@list.ru>
+Date:   Wed Jul 31 12:32:53 2019 +0300
+
+    add products controller
+
+[33mcommit 0c5e04f34cbaa3b9ad9dfdbc6d7a12407eb5a421[m
+Author: ilwess <pasha.vrublevskiy20@list.ru>
+Date:   Wed Jul 31 12:31:52 2019 +0300
+
+    add home controller, views.home
+
+[33mcommit 6d06868d6ef7d03e798c0309fa67dea04ef2c4bf[m
+Author: ilwess <pasha.vrublevskiy20@list.ru>
+Date:   Wed Jul 31 11:48:45 2019 +0300
+
+    Добавьте файлы проекта.
+
+[33mcommit 31a2d26c1954d11c4c1cb08e9930bfe7fa5c890d[m
+Author: ilwess <pasha.vrublevskiy20@list.ru>
+Date:   Wed Jul 31 11:48:33 2019 +0300
+
+    Добавьте GITIGNORE- и GITATTRIBUTES-файлы.
