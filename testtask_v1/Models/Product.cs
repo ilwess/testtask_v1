@@ -8,48 +8,43 @@ namespace testtask_v1.Models
     public class Product
     {
         private static int idIncrementer = 0;
-
-        private int id;
-        private string name;
-        private double price;
-        private string description;
-
+        
         public int Id
         {
-            get { return id; }
-            set { id = value; }
+            get;
+            set;
         }
 
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get;
+            set;
         }
 
         public double Price
         {
-            get { return price; }
-            set { price = value; }
+            get;
+            set;
         }
 
         public string Description
         {
-            get { return description; }
-            set { description = value; }
+            get;
+            set;
         }
 
         public Product(string name, double price, string descr)
         {
-            this.id = idIncrementer;
+            this.Id = idIncrementer;
             idIncrementer++;
-            this.name = name;
-            this.price = price;
-            this.description = descr;
+            this.Name = name;
+            this.Price = price;
+            this.Description = descr;
         }
 
         public Product()
         {
-            this.id = idIncrementer;
+            this.Id = idIncrementer;
             idIncrementer++;
         }
     }
