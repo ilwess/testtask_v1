@@ -8,6 +8,7 @@ namespace testtask_v1.Controllers
 {
     public class HomeController : Controller
     {
+        
         // GET: Home
         public ViewResult Index()
         {
