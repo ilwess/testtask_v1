@@ -23,6 +23,7 @@ namespace testtask_v1
         protected void Application_Start()
         {
             Database.SetInitializer(new ProductDbInitializer());
+            Database.SetInitializer(new CustomerDbInitializer());
             Logger.Logger.InitLogger();
             Logger.LoggerDb.InitLogger();
             AreaRegistration.RegisterAllAreas();

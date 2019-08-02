@@ -8,6 +8,6 @@ namespace testtask_v1.Models
 {
     public class CustomerContext :DbContext
     {
-        public DbSet<Customer> Customers { get; set; };
+        public DbSet<Customer> Customers { get; set; }
     }
 }

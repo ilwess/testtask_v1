@@ -111,11 +111,15 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Filters\Filters.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Logger\LoggerDb.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerContext.cs" />
+    <Compile Include="Models\CustomerDbInitializer.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductContext.cs" />
     <Compile Include="Models\ProductDbInitializer.cs" />
