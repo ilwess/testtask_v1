@@ -6,7 +6,7 @@ using System.Web;
 
 namespace testtask_v1.Models
 {
-    public class InfoCustomer
+    public class InfoUser
     {
         [Required]
         public string Email

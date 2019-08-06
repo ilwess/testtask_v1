@@ -9,16 +9,16 @@ using Microsoft.Owin;
 
 namespace testtask_v1.Models
 {
-    public class AppManager : UserManager<Customer>
+    public class AppManager : UserManager<User>
     {
-        public AppManager(IUserStore<Customer> store) : base(store){
+        public AppManager(IUserStore<User> store) : base(store){
         }
 
         public static AppManager Create(IdentityFactoryOptions<AppManager> options,
                                         IOwinContext context)
         {
             AppContext db = context.Get<AppContext>();
-            AppManager manager = new AppManager(new UserStore<Customer>(db));
+            AppManager manager = new AppManager(new UserStore<User>(db));
             return manager;
         }
     }

@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace testtask_v1.Models
 {
-    public class AppContext : IdentityDbContext<Customer>
+    public class AppContext : IdentityDbContext<User>
     {
         public AppContext() : base("IdentityDb")
         {

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace testtask_v1.Models
 {
-    public class UserOrder
+    public class CustomerOrder
     {
         public int Id
         {
@@ -14,19 +14,7 @@ namespace testtask_v1.Models
             set;
         }
 
-        [Required]
-        public string Email
-        {
-            get;
-            set;
-        }
-
-        [Required]
-        public string Phone
-        {
-            get;
-            set;
-        }
+        public Customer Orderer { get; set; }
         
         public List<Product> Products
         {

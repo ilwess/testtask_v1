@@ -139,10 +139,13 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerOrder.cs" />
-    <Compile Include="Models\InfoCustomer.cs" />
-    <Compile Include="Models\LoginCustomer.cs" />
-    <Compile Include="Models\PhoneCustomer.cs" />
+    <Compile Include="Models\InfoUser.cs" />
+    <Compile Include="Models\LoginUser.cs" />
+    <Compile Include="Models\PhoneUser.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
@@ -157,12 +160,13 @@
     <Compile Include="Logger\LoggerDb.cs" />
     <Compile Include="Models\AppContext.cs" />
     <Compile Include="Models\AppManager.cs" />
-    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductContext.cs" />
     <Compile Include="Models\ProductDbInitializer.cs" />
-    <Compile Include="Models\RegisterCustomer.cs" />
+    <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">
@@ -178,6 +182,9 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Views\Account\EditNumber.cshtml" />
+    <Content Include="Views\Products\ButtonAdd.cshtml" />
+    <Content Include="Views\Products\ShowCart.cshtml" />
+    <Content Include="Views\Order\MakeOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace testtask_v1.Models
 {
-    public class RegisterCustomer
+    public class RegisterUser
     {
         [Required]
         [RegularExpression(@".+\@.+\..+", ErrorMessage = "Enter valid email")]

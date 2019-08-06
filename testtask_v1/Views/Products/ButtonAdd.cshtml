@@ -1,0 +1,9 @@
+﻿@model string
+
+<div>
+      @using (Html.BeginForm("AddToCart", "Products"))
+      {
+          <input type="hidden" value="@Model" name="name" />
+          <input type="submit" value="@Model" />
+      }
+</div>

@@ -40,21 +40,22 @@ namespace testtask_v1.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register(RegisterCustomer rc)
+        public async Task<ActionResult> Register(RegisterUser rc)
         {
             if (ModelState.IsValid)
             {
-                Customer customer = new Customer()
+                User user = new User()
                 {
                     UserName = rc.Email,
                     Email = rc.Email,
                 };
                 IdentityResult result = await
-                    Manager.CreateAsync(customer, rc.Password);
+                    Manager.CreateAsync(user, rc.Password);
                 if (result.Succeeded)
                 {
                     using (ProductContext db = new ProductContext())
                     {
+                        Customer customer = new Customer(user.Email, user.PhoneNumber);
                         db.Customers.Add(customer);
                     }
                     return RedirectToAction("Login", "Account");
@@ -77,11 +78,11 @@ namespace testtask_v1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginCustomer lc, string currUrl)
+        public async Task<ActionResult> Login(LoginUser lc, string currUrl)
         {
             if (ModelState.IsValid)
             {
-                Customer customer = await Manager.FindAsync(lc.Email, lc.Password);
+                User customer = await Manager.FindAsync(lc.Email, lc.Password);
                 if(customer == null)
                 {
                     ModelState.AddModelError(" ", "Wrong login or password!");
@@ -114,7 +115,7 @@ namespace testtask_v1.Controllers
         [Authorize]
         public async Task<ViewResult> Info()
         {
-            InfoCustomer info = new InfoCustomer();
+            InfoUser info = new InfoUser();
             info.Email = await Manager.GetEmailAsync(User.Identity.GetUserId());
             info.Phone = await Manager.GetPhoneNumberAsync(User.Identity.GetUserId());
             return View(info);
@@ -124,10 +125,10 @@ namespace testtask_v1.Controllers
         [HttpGet]
         public async Task<ActionResult> EditNumber()
         {
-            Customer customer = await Manager.FindByEmailAsync(User.Identity.Name);
+            User customer = await Manager.FindByEmailAsync(User.Identity.Name);
             if (customer != null)
             {
-                PhoneCustomer ic = new PhoneCustomer()
+                PhoneUser ic = new PhoneUser()
                 {
                     CountryCode = "",
                     OperatorCode = "",
@@ -140,9 +141,9 @@ namespace testtask_v1.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult> EditNumber(PhoneCustomer ic)
+        public async Task<ActionResult> EditNumber(PhoneUser ic)
         {
-            Customer customer = await
+            User customer = await
                 Manager.FindByEmailAsync(User.Identity.Name);
             if(customer != null)
             {

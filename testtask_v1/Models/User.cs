@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace testtask_v1.Models
 {
-    public class Customer : IdentityUser
+    public class User : IdentityUser
     {
         public DateTime RegistrationDate
         {
@@ -16,7 +16,7 @@ namespace testtask_v1.Models
             set;
         }
 
-        public Customer()
+        public User()
         {
             RegistrationDate = DateTime.Now;
         }

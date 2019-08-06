@@ -10,5 +10,6 @@ namespace testtask_v1.Models
     {
         public DbSet<Product> Prods { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerOrder> Orders { get; set; }
     }
 }
