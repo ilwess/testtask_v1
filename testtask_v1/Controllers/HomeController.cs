@@ -12,8 +12,6 @@ namespace testtask_v1.Controllers
         // GET: Home
         public ViewResult Index()
         {
-            float pi = 0;
-            ViewBag.Number = pi;
             return View();
         }
 

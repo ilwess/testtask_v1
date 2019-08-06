@@ -1,0 +1,30 @@
+﻿@model testtask_v1.Models.RegisterCustomer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <h3>REGISTRATION</h3>
+            @Html.ValidationSummary(false)
+            <div>
+                <p>Enter email: @Html.EditorFor(customer => customer.Email)</p>
+                <p>Enter password: @Html.EditorFor(customer => customer.Password)</p>
+                <p>Confirn password: @Html.EditorFor(customer => customer.PasswordConf)</p>
+                <input type="submit" value="Register" />
+            </div>
+        </div>
+    }
+</body>
+</html>

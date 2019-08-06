@@ -1,0 +1,29 @@
+﻿@model testtask_v1.Models.PhoneCustomer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditNumber</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm()){
+            <div>
+                <p>Choose country code: @Html.DropDownListFor(
+                                      phone => phone.CountryCode, new[]{
+                  new SelectListItem(){Text = "Belarus(+375)", Value = "+375"},
+                  })</p>
+                <p>Enter operator code: @Html.TextBoxFor(info => info.OperatorCode)</p>
+                <p>Enter new phone number: @Html.TextBoxFor(info => info.PhoneNumber)</p>
+                <input type="submit" value="Change phone number" />
+            </div>
+        }
+    </div>
+</body>
+</html>

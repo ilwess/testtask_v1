@@ -3,33 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 
 namespace testtask_v1.Models
 {
-    public class Customer
+    public class Customer : IdentityUser
     {
-        public int Id
+        public DateTime RegistrationDate
         {
             get;
             set;
         }
 
-        public string Login
+        public Customer()
         {
-            get;
-            set;
-        }
-
-        public string Password
-        {
-            get;
-            set;
-        }
-
-        public DateTime RegDate
-        {
-            get;
-            set;
+            RegistrationDate = DateTime.Now;
         }
     }
 }

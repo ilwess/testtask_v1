@@ -1,0 +1,24 @@
+﻿@model testtask_v1.Models.InfoCustomer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Info</title>
+</head>
+<body>
+    <div>
+        <p>Your email: @Html.DisplayTextFor(info => info.Email)</p>
+        <p>Your phone: @Html.DisplayTextFor(info => info.Phone)</p>
+        @using (Html.BeginForm("EditNumber", "Account", FormMethod.Get))
+        {
+            <input type="submit" value="Edit Phone"/>
+        }
+    </div>
+</body>
+</html>

@@ -9,5 +9,6 @@ namespace testtask_v1.Models
     public class ProductContext : DbContext
     {
         public DbSet<Product> Prods { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 }

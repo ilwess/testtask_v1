@@ -1,0 +1,28 @@
+﻿@model testtask_v1.Models.LoginCustomer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <h2>LOGIN</h2>
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+            <input type="hidden" name="CurrUrl" value="@ViewBag.CurrUrl" />
+            <p>Enter email: @Html.EditorFor(customer => customer.Email)</p>
+            <p>Enter password: @Html.EditorFor(customer => customer.Password)</p>
+            <p><input type="submit" value="LOGIN" /></p>
+        }
+    </div>
+</body>
+</html>
