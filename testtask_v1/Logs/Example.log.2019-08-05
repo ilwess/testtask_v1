@@ -1,0 +1,20 @@
+2019-08-05 10:24:33,283  WARN  Не удалось найти представление "Index" или его образец, либо ни один обработчик представлений не поддерживает места поиска. Выполнялся поиск в следующих местах:
+~/Views/Customers/Index.aspx
+~/Views/Customers/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Customers/Index.cshtml
+~/Views/Customers/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+2019-08-05 13:09:15,958  WARN  Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+2019-08-05 16:42:15,959  WARN  Дочерним действиям не разрешается выполнять действия перенаправления.
+2019-08-05 17:53:50,444  WARN  Ключевое слово не поддерживается: "initital catalog;integrated security".
+2019-08-05 18:14:56,156  WARN  Ключевое слово не поддерживается: "initital catalog;integrated security".
+2019-08-05 18:40:26,000  WARN  One or more validation errors were detected during model generation:
+
+testtask_v1.Models.IdentityUserLogin: : EntityType 'IdentityUserLogin' has no key defined. Define the key for this EntityType.
+testtask_v1.Models.IdentityUserRole: : EntityType 'IdentityUserRole' has no key defined. Define the key for this EntityType.
+IdentityUserLogins: EntityType: EntitySet 'IdentityUserLogins' is based on type 'IdentityUserLogin' that has no keys defined.
+IdentityUserRoles: EntityType: EntitySet 'IdentityUserRoles' is based on type 'IdentityUserRole' that has no keys defined.
+

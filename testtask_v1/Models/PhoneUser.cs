@@ -29,5 +29,11 @@ namespace testtask_v1.Models
             get;
             set;
         }
+
+        [Required]
+        public string FullPhoneNumber
+        {
+            get { return CountryCode + OperatorCode + PhoneNumber; }
+        }
     }
 }

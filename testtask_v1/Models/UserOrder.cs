@@ -8,6 +8,12 @@ namespace testtask_v1.Models
 {
     public class UserOrder
     {
+        public int Id
+        {
+            get;
+            set;
+        }
+
         [Required]
         public string Email
         {
@@ -21,7 +27,12 @@ namespace testtask_v1.Models
             get;
             set;
         }
-
+        
+        public List<Product> Products
+        {
+            get;
+            set;
+        }
         
     }
 }

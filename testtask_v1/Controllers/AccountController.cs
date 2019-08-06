@@ -146,7 +146,7 @@ namespace testtask_v1.Controllers
                 Manager.FindByEmailAsync(User.Identity.Name);
             if(customer != null)
             {
-                customer.PhoneNumber = ic.CountryCode + ic.OperatorCode + ic.PhoneNumber;
+                customer.PhoneNumber = ic.FullPhoneNumber;
                 IdentityResult res = await 
                     Manager.UpdateAsync(customer);
                 if (res.Succeeded)
