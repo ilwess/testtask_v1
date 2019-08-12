@@ -19,13 +19,6 @@ namespace testtask_v1
     public class MvcApplication : System.Web.HttpApplication
     {
         public static int queryCount = 0;
-        private AppRoleManager RoleManager
-        {
-            get
-            {
-                return HttpContext.GetOwinCo
-            }
-        }
         protected string email = "pasha.vrublevskiy20@list.ru";
         protected void Application_Start()
         {

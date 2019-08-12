@@ -45,7 +45,7 @@ namespace testtask_v1.Areas.Admin.Controllers
             }
             return RedirectToAction("List", "Admin");
         }
-
+        [Authorize(Roles = "Manager")]
         [HttpGet]
         public ActionResult EditProduct(int prodId)
         {

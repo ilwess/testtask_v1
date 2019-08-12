@@ -35,22 +35,7 @@ namespace testtask_v1.Controllers
             }
         }
 
-        private async void AddRoles()
-        {
-            var adminRole = await roleManager.FindByIdAsync("Admin");
-            var managerRole = await roleManager.FindByIdAsync("Manager");
-            var userRole = await roleManager.FindByIdAsync("User");
-
-            if (adminRole == null)
-            {
-                adminRole = new AppRole() { Name = "Admin", };
-                managerRole = new AppRole() { Name = "Manager", };
-                userRole = new AppRole() { Name = "User", };
-                await roleManager.CreateAsync(adminRole);
-                await roleManager.CreateAsync(managerRole);
-                await roleManager.CreateAsync(userRole);
-            }
-        }
+       
 
         private IAuthenticationManager AuthManager
         {
@@ -61,9 +46,8 @@ namespace testtask_v1.Controllers
         }
 
         [HttpGet]
-        public ViewResult Register()
+        public async Task<ViewResult> Register()
         {
-            AddRoles();
             return View();
         }
 
@@ -77,8 +61,10 @@ namespace testtask_v1.Controllers
                     UserName = rc.Email,
                     Email = rc.Email,
                 };
+                
                 IdentityResult result = await
                     Manager.CreateAsync(user, rc.Password);
+                await Manager.AddToRoleAsync(user.Id, "User");
                 if (result.Succeeded)
                 {
                     using (ProductContext db = new ProductContext())
