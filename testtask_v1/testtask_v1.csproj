@@ -206,6 +206,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Views\Account\EditNumber.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -219,7 +220,6 @@
     <Folder Include="Areas\Shop\Models\" />
     <Folder Include="Areas\Shop\Views\Cart\" />
     <Folder Include="Views\Home\QueryCount\" />
-    <Folder Include="Views\Role\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
