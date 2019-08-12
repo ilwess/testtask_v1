@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using System.Security.Claims;
 using System.Net;
+using System.Net.Mail;
 
 namespace testtask_v1.Controllers
 {
@@ -60,6 +61,7 @@ namespace testtask_v1.Controllers
                 {
                     UserName = rc.Email,
                     Email = rc.Email,
+                    EmailConfirmed = false,
                 };
                 
                 IdentityResult result = await
@@ -67,13 +69,43 @@ namespace testtask_v1.Controllers
                 await Manager.AddToRoleAsync(user.Id, "User");
                 if (result.Succeeded)
                 {
+                    MailAddress from = new MailAddress(
+                        "pasha.vrublevskiy20@list.ru",
+                        "Email Confirmation");
+
+                    MailAddress to = new MailAddress(user.Email);
+
+                    MailMessage msg = new MailMessage(from, to);
+
+                    msg.Subject = "Confirmation";
+
+                    msg.Body = string.Format("To complete click: " +
+                        "<a href=\"{0}\" title=\"Confirm registration\">{0}</a>",
+                        Url.Action("ConfirmEmail", "Account",
+                        new { Token = user.Id, Email = user.Email },
+                        Request.Url.Scheme
+                        ));
+                    msg.IsBodyHtml = true;
+
+                    SmtpClient client = new SmtpClient("smtp.mail.ru", 587);
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential(
+                        "pasha.vrublevskiy20@list.ru",
+                        "ExortinvokeR122");
+                    client.EnableSsl = true;
+                    client.Timeout = 10000;
+
+                    client.Send(msg);
+
                     using (ProductContext db = new ProductContext())
                     {
                         Customer customer = new Customer(user.Email, user.PhoneNumber);
                         db.Customers.Add(customer);
                         await db.SaveChangesAsync();
                     }
-                    return RedirectToAction("Login", "Account");
+
+                    return RedirectToAction("Confirm", "Account", new { email = user.Email});
                 } else
                 {
                     foreach (string error in result.Errors)
@@ -83,8 +115,46 @@ namespace testtask_v1.Controllers
             return View();
         }
 
+        public ActionResult Confirm(string email)
+        {
+            return View(email);
+        }
+
+        public async Task<ActionResult> ConfirmEmail(
+            string token,
+            string email)
+        {
+            User user = await Manager.FindByIdAsync(token);
+            if(user != null)
+            {
+                if(user.Email == email)
+                {
+                    user.EmailConfirmed = true;
+                    await Manager.UpdateAsync(user);
+                    ClaimsIdentity claims = await Manager.CreateIdentityAsync(
+                        user,
+                        DefaultAuthenticationTypes.ApplicationCookie);
+                    AuthManager.SignOut();
+                    AuthManager.SignIn(new AuthenticationProperties()
+                    {
+                        IsPersistent = true,
+                    }, claims);
+
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return RedirectToAction("Confirm", "Account", new { email = user.Email});
+                }
+            }
+            else
+            {
+                return RedirectToAction("Register", "Account");
+            }
+        }
 
         [HttpGet]
+        [AllowAnonymous]
         public ViewResult Login(string currUrl)
         {
             ViewBag.CurrUrl = currUrl;
@@ -102,18 +172,26 @@ namespace testtask_v1.Controllers
                 {
                     ModelState.AddModelError(" ", "Wrong login or password!");
                 } else {
-                    ClaimsIdentity claim = await Manager.CreateIdentityAsync(
-                        customer, 
-                        DefaultAuthenticationTypes.ApplicationCookie);
-                    AuthManager.SignOut();
-                    AuthManager.SignIn(new AuthenticationProperties
+                    if (customer.EmailConfirmed != false)
                     {
-                        IsPersistent = true,
-                    }, claim);
-                    if (!string.IsNullOrEmpty(currUrl))
+                        ClaimsIdentity claim = await Manager.CreateIdentityAsync(
+                            customer,
+                            DefaultAuthenticationTypes.ApplicationCookie);
+                        AuthManager.SignOut();
+                        AuthManager.SignIn(new AuthenticationProperties
+                        {
+                            IsPersistent = true,
+                        }, claim);
+                        if (!string.IsNullOrEmpty(currUrl))
+                        {
+                            return Redirect(currUrl);
+                        }
+                        else { return RedirectToAction("Index", "Home"); }
+                    }
+                    else
                     {
-                        return Redirect(currUrl);
-                    } else { return RedirectToAction("Index", "Home"); }
+                        return RedirectToAction("Confirm", "Account");
+                    }
                 }
                 ViewBag.CurrUrl = currUrl;
                 return View(lc);

@@ -40,18 +40,8 @@ namespace testtask_v1.Areas.Shop.Controllers
             }
             return View(prods);
         }
-        
-        public ActionResult AddToCart(ShoppingCart<Product> cart, string name)
-        {
-            Product product = pc.Prods.First(o => o.Name == name);
-            cart.Add(product);
-            return RedirectToAction("List");
-        }
 
-        public ViewResult ShowCart(ShoppingCart<Product> cart)
-        {
-            return View(cart);
-        }
+        
 
         public ActionResult Export(string nameOfProduct)
         {

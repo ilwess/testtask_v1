@@ -162,9 +162,9 @@
     <Compile Include="Models\ProductCustomerOrders.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Areas\Shop\Controllers\AccountController.cs" />
     <Compile Include="Controllers\ExceptionController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Areas\Shop\Controllers\HomeController.cs" />
     <Compile Include="Areas\Shop\Controllers\ProductsController.cs" />
     <Compile Include="Filters\Filters.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,17 +196,19 @@
     <Content Include="Areas\Shop\Views\Order\Orders.cshtml" />
     <Content Include="Areas\Shop\Views\Order\OrdersByCustomer.cshtml" />
     <Content Include="Areas\Shop\Views\Products\List.cshtml" />
-    <Content Include="Areas\Shop\Views\Products\ShowCart.cshtml" />
+    <Content Include="Areas\Shop\Views\Cart\ShowCart.cshtml" />
     <Content Include="Areas\Shop\Views\Shared\ButtonAdd.cshtml" />
+    <Content Include="Areas\Shop\Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Areas\Shop\Views\Account\Confirm.cshtml" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Areas\Shop\Views\Home\Index.cshtml" />
     <Content Include="Views\Exception\ExceptionFound.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Info.cshtml" />
-    <Content Include="Views\Account\EditNumber.cshtml" />
-    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Areas\Shop\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Shop\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Shop\Views\Account\Info.cshtml" />
+    <Content Include="Areas\Shop\Views\Account\EditNumber.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -218,8 +220,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Shop\Models\" />
-    <Folder Include="Areas\Shop\Views\Cart\" />
-    <Folder Include="Views\Home\QueryCount\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

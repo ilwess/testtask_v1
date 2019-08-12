@@ -14,7 +14,7 @@
 </head>
 <body>
     <div>
-        @using (Html.BeginForm("AddToCart", "Products"))
+        @using (Html.BeginForm("AddToCart", "Cart"))
         {
             <input type="hidden" value="@((ShoppingCart<Product>)Session["Cart"])" />
             <input type="hidden" value="@Model" name="name" />
