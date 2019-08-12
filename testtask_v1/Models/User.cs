@@ -22,4 +22,5 @@ namespace testtask_v1.Models
             RegistrationDate = DateTime.Now;
         }
     }
+
 }

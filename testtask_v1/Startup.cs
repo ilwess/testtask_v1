@@ -17,6 +17,8 @@ namespace testtask_v1
         {
             app.CreatePerOwinContext<Models.AppContext>(Models.AppContext.Create);
             app.CreatePerOwinContext<AppManager>(AppManager.Create);
+            app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
