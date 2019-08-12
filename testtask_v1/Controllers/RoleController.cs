@@ -24,12 +24,6 @@ namespace testtask_v1.Controllers
             return View(roleManager.Roles);
         }
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         [HttpPost]
         public async Task<ActionResult> Create(string roleName)
         {

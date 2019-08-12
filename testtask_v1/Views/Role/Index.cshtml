@@ -13,6 +13,11 @@
 </head>
 <body>
     <div>
+        @using (Html.BeginForm("Create", "Role"))
+        {
+            <input type="text" name="roleName" />
+            <input type="submit" value="Create" />
+        }
         @foreach (var role in Model)
         {
             <h3>@role.Name</h3>
