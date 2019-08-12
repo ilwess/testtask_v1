@@ -17,7 +17,7 @@ namespace testtask_v1.Areas.Shop
             context.MapRoute(
                 "Shop_default",
                 "Shop/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller = "Products", action = "List", id = UrlParameter.Optional }
             );
         }
     }

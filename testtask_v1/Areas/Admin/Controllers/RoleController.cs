@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using testtask_v1.ViewModels;
 
-namespace testtask_v1.Controllers
+namespace testtask_v1.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class RoleController : Controller

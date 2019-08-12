@@ -14,7 +14,7 @@ using System.Security.Claims;
 using System.Net;
 using System.Net.Mail;
 
-namespace testtask_v1.Controllers
+namespace testtask_v1.Areas.Shop.Controllers
 {
     public class AccountController : Controller
     {
@@ -105,7 +105,7 @@ namespace testtask_v1.Controllers
                         await db.SaveChangesAsync();
                     }
 
-                    return RedirectToAction("Confirm", "Account", new { email = user.Email});
+                    return RedirectToAction("Confirm", "Account", new { user.Email});
                 } else
                 {
                     foreach (string error in result.Errors)
