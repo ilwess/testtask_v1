@@ -1,0 +1,20 @@
+﻿@model testtask_v1.Models.Product
+
+<div class="item" style="border-style: solid; background-color: gray;">
+    
+    <h3>@Model.Name</h3>
+    <br />
+    @Model.Description
+    <br />
+    <h4>@Model.Price</h4>
+    @using (Html.BeginForm("DeleteProduct", "Admin", FormMethod.Post))
+    {
+        <input type="hidden" value="@Model.Id" name="prodId" />
+        <input type="submit" value="Delete" />
+    }
+    @using (Html.BeginForm("EditProduct", "Admin", FormMethod.Get))
+    {
+        <input type="hidden" value="@Model.Id" name="prodId" />
+        <input type="submit" value="Edit" />
+    }
+</div>

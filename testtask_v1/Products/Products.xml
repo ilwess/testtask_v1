@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Product>
+    <Id>1</Id>
+    <Name>Pen</Name>
+    <Price>1</Price>
+    <Description>good pen)</Description>
+  </Product>
+  <Product>
+    <Id>2</Id>
+    <Name>Ball</Name>
+    <Price>5</Price>
+    <Description>the best ball ))</Description>
+  </Product>
+  <Product>
+    <Id>3</Id>
+    <Name>Plastic left leg</Name>
+    <Price>10</Price>
+    <Description>pretty good plastic leg for people without left leg</Description>
+  </Product>
+  <Product>
+    <Id>4</Id>
+    <Name>Plastic right leg</Name>
+    <Price>10</Price>
+    <Description>pretty good plastic right leg for people without right leg</Description>
+  </Product>
+  <Product>
+    <Id>5</Id>
+    <Name>Right and left plastic legs</Name>
+    <Price>19</Price>
+    <Description>nice set of legs with discount</Description>
+  </Product>
+  <Product>
+    <Id>6</Id>
+    <Name>Plastic left leg</Name>
+    <Price>10</Price>
+    <Description>pretty good plastic leg for people without left leg</Description>
+  </Product>
+  <Product>
+    <Id>7</Id>
+    <Name>Pen</Name>
+    <Price>1</Price>
+    <Description>good pen)</Description>
+  </Product>
+  <Product>
+    <Id>8</Id>
+    <Name>Plastic left leg</Name>
+    <Price>10</Price>
+    <Description>pretty good plastic leg for people without left leg</Description>
+  </Product>
+  <Product>
+    <Id>9</Id>
+    <Name>Ball</Name>
+    <Price>5</Price>
+    <Description>the best ball ))</Description>
+  </Product>
+  <Product>
+    <Id>10</Id>
+    <Name>Plastic left leg</Name>
+    <Price>10</Price>
+    <Description>pretty good plastic leg for people without left leg</Description>
+  </Product>
+  <Product>
+    <Id>11</Id>
+    <Name>Pen</Name>
+    <Price>1</Price>
+    <Description>good pen)</Description>
+  </Product>
+  <Product>
+    <Id>12</Id>
+    <Name>Ball</Name>
+    <Price>5</Price>
+    <Description>the best ball ))</Description>
+  </Product>
+  <Product>
+    <Id>13</Id>
+    <Name>Ball</Name>
+    <Price>5</Price>
+    <Description>the best ball ))</Description>
+  </Product>
+  <Product>
+    <Id>14</Id>
+    <Name>Plastic left leg</Name>
+    <Price>10</Price>
+    <Description>pretty good plastic leg for people without left leg</Description>
+  </Product>
+  <Product>
+    <Id>15</Id>
+    <Name>Right and left plastic legs</Name>
+    <Price>19</Price>
+    <Description>nice set of legs with discount</Description>
+  </Product>
+  <Product>
+    <Id>16</Id>
+    <Name>Ball</Name>
+    <Price>5</Price>
+    <Description>the best ball ))</Description>
+  </Product>
+  <Product>
+    <Id>17</Id>
+    <Name>Right and left plastic legs</Name>
+    <Price>19</Price>
+    <Description>nice set of legs with discount</Description>
+  </Product>
+</ArrayOfProduct>

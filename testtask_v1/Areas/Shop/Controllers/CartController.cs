@@ -4,17 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace testtask_v1.Controllers
+namespace testtask_v1.Areas.Shop.Controllers
 {
-    public class OrderController : Controller
+    public class CartController : Controller
     {
-        // GET: Order
+        // GET: Shop/Cart
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult MakeOrder()
         {
             return View();
         }

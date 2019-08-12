@@ -1,0 +1,7 @@
+2019-08-08 12:09:29,499  WARN  Cannot drop database "PRODUCTCONTEXT_2a8ca2e933c147e89bbddae3daa10d09" because it is currently in use.
+2019-08-08 12:26:43,641  WARN  Cannot drop database "PRODUCTCONTEXT_973f42db840942378efd957647c0c59c" because it is currently in use.
+2019-08-08 12:55:42,781  WARN  Cannot drop database "PRODUCTCONTEXT_f0155b7642a94392a5f1c3935e468226" because it is currently in use.
+2019-08-08 12:58:48,170  WARN  Значение не может быть неопределенным.
+Имя параметра: source
+2019-08-08 15:25:58,412  WARN  ":" нельзя использовать в начале блока кода. Допускаются только идентификаторы, ключевые слова, комментарии и символы "(" и "{".
+

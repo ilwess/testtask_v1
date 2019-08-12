@@ -1,0 +1,47 @@
+﻿@model IEnumerable<testtask_v1.Models.CustomerOrder>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OrdersByCustomer</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <p>
+                <input type="text" name="customerName" />
+                <input type="submit" value="Find" />
+            </p>
+        }
+        @if(Model != null)
+        {
+            <table>
+                <tr>
+                    <td>
+                        @Model.First().Orderer.Email
+                    </td>
+                    @foreach (var order in Model)
+                    {
+                    <td>
+                        @order.Date
+                    </td>
+                        foreach (var prod in order.Products)
+                        {
+                        <td>
+                            @prod.Name
+                        </td>
+                        }
+                    }
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

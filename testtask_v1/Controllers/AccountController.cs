@@ -36,6 +36,7 @@ namespace testtask_v1.Controllers
         [HttpGet]
         public ViewResult Register()
         {
+            AuthManager.SignOut();
             return View();
         }
 
@@ -57,6 +58,7 @@ namespace testtask_v1.Controllers
                     {
                         Customer customer = new Customer(user.Email, user.PhoneNumber);
                         db.Customers.Add(customer);
+                        await db.SaveChangesAsync();
                     }
                     return RedirectToAction("Login", "Account");
                 } else
@@ -109,7 +111,7 @@ namespace testtask_v1.Controllers
         public ActionResult Logout()
         {
             AuthManager.SignOut();
-            return View("Account", "Login");
+            return View("Login");
         }
 
         [Authorize]

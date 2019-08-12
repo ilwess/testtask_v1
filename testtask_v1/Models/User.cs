@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace testtask_v1.Models
 {
+    
     public class User : IdentityUser
     {
         public DateTime RegistrationDate

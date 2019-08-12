@@ -1,0 +1,51 @@
+﻿@model testtask_v1.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditProduct</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Old</td>
+                <td>@Model.Name</td>
+                <td>@Model.Price</td>
+                <td>@Model.Description</td>
+            </tr>
+            <tr>
+                <td>New</td>
+                @using (Html.BeginForm("EditProduct", "Admin"))
+                {
+                    <td>
+                        <input type="hidden" value="@Model.Id" name="prodId" />
+                        <input type="text" name="newName" />
+                    </td>
+                    <td>
+                        <input type="text" name="newPrice" />
+                    </td>
+                    <td>
+                        <input type="text" name="newDescription" />
+                    </td>
+                    <td>
+                        <input type="submit" value="Change" />
+                    </td>
+                }
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

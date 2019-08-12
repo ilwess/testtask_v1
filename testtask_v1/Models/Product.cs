@@ -5,9 +5,9 @@ using System.Web;
 
 namespace testtask_v1.Models
 {
+    [Serializable]
     public class Product
     {
-        private static int idIncrementer = 0;
         
         public int Id
         {
@@ -33,10 +33,14 @@ namespace testtask_v1.Models
             set;
         }
 
+        public List<CustomerOrder> Orders
+        {
+            get;
+            set;
+        }
+
         public Product(string name, double price, string descr)
         {
-            this.Id = idIncrementer;
-            idIncrementer++;
             this.Name = name;
             this.Price = price;
             this.Description = descr;
@@ -44,8 +48,7 @@ namespace testtask_v1.Models
 
         public Product()
         {
-            this.Id = idIncrementer;
-            idIncrementer++;
+
         }
     }
 }

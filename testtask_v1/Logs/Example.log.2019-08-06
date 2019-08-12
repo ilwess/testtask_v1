@@ -1,0 +1,37 @@
+2019-08-06 11:12:04,273  WARN  One or more validation errors were detected during model generation:
+
+testtask_v1.Models.IdentityUserLogin: : EntityType 'IdentityUserLogin' has no key defined. Define the key for this EntityType.
+testtask_v1.Models.IdentityUserRole: : EntityType 'IdentityUserRole' has no key defined. Define the key for this EntityType.
+IdentityUserLogins: EntityType: EntitySet 'IdentityUserLogins' is based on type 'IdentityUserLogin' that has no keys defined.
+IdentityUserRoles: EntityType: EntitySet 'IdentityUserRoles' is based on type 'IdentityUserRole' that has no keys defined.
+
+2019-08-06 11:40:13,091  WARN  C:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\vs\4f2e8e2e\f701541e\App_Web_register.cshtml.5f83eb8c.qrvr5lol.0.cs(30): error CS0234: The type or namespace name 'RegisterCustomer' does not exist in the namespace 'testtask_v1.Models' (are you missing an assembly reference?)
+2019-08-06 12:28:10,989  WARN  Ёлемент модели, переданный в словарь, имеет тип "System.Data.Entity.Infrastructure.DbQuery`1[System.Linq.IGrouping`2[<>f__AnonymousType1`3[System.String,System.Double,System.String],testtask_v1.Models.Product]]", но дл€ этого словар€ требуетс€ элемент модели типа "System.Linq.IQueryable`1[System.Linq.IGrouping`2[System.String,testtask_v1.Models.Product]]".
+2019-08-06 12:57:30,167  WARN  C:\Users\јдмин\Documents\Visual Studio 2017\Projects\testtask_v1\testtask_v1\Views\Products\List.cshtml(27): error CS1061: 'ProductViewModel' does not contain a definition for 'Key' and no extension method 'Key' accepting a first argument of type 'ProductViewModel' could be found (are you missing a using directive or an assembly reference?)
+2019-08-06 14:10:04,465  WARN  
+2019-08-06 14:17:04,419  WARN  
+2019-08-06 14:27:05,553  WARN  
+2019-08-06 14:36:57,365  WARN  
+2019-08-06 14:41:14,940  WARN  
+2019-08-06 14:46:21,179  WARN  
+2019-08-06 17:18:54,368  DEBUG Ball
+2019-08-06 17:22:13,809  DEBUG Ball
+2019-08-06 17:22:13,921  DEBUG testtask_v1.Models.Product
+2019-08-06 17:22:13,981  DEBUG testtask_v1.Models.Product
+2019-08-06 17:23:02,725  DEBUG Right and left plastic legs
+2019-08-06 17:23:02,733  DEBUG testtask_v1.Models.Product
+2019-08-06 17:23:02,738  DEBUG testtask_v1.Models.Product
+2019-08-06 17:25:40,753  DEBUG Ball
+2019-08-06 17:25:40,865  DEBUG testtask_v1.Models.Product
+2019-08-06 17:25:40,882  DEBUG testtask_v1.Models.Product
+2019-08-06 17:30:44,127  DEBUG Ball
+2019-08-06 17:30:44,202  DEBUG 1
+2019-08-06 17:33:05,088  DEBUG Ball
+2019-08-06 17:33:05,194  DEBUG 1
+2019-08-06 17:35:23,400  DEBUG Ball
+2019-08-06 17:35:23,483  DEBUG 1
+2019-08-06 19:28:26,061  DEBUG Ball
+2019-08-06 19:28:26,443  DEBUG 1
+2019-08-06 19:28:35,472  WARN  C:\Users\јдмин\Documents\Visual Studio 2017\Projects\testtask_v1\testtask_v1\Views\Products\ShowCart.cshtml(15): error CS1061: 'ShoppingCart<Product>' does not contain a definition for 'Products' and no extension method 'Products' accepting a first argument of type 'ShoppingCart<Product>' could be found (are you missing a using directive or an assembly reference?)
+2019-08-06 19:30:07,561  DEBUG Ball
+2019-08-06 19:30:07,629  DEBUG 1

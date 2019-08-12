@@ -1,0 +1,27 @@
+﻿@using testtask_v1.Models
+@model IEnumerable<Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <div class="admin-list"">
+        @using (Html.BeginForm("Add", "Admin", FormMethod.Get))
+        {
+            <input type="submit" value="Add" />
+        }
+        @foreach (var p in Model)
+            {
+                Html.RenderPartial("AdminProductSummary", p);
+            }
+    </div>
+</body>
+</html>

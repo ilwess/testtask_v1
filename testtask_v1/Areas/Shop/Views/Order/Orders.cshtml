@@ -1,0 +1,40 @@
+﻿@using testtask_v1.Models
+@model IEnumerable<CustomerOrder>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Orders</title>
+</head>
+<body>
+    <div>
+        <table>
+            @using (Html.BeginForm())
+            {
+            <tr>
+                <td><input type="datetime-local" name="StartDate" /></td>
+                <td><input type="datetime-local" name="EndDate" /></td>
+                <td><input type="submit" value="Find" /></td>
+            </tr>
+            }
+            @if (Model is null)
+            {
+                @: Select date
+            }
+            else
+            {
+                <tr>
+                    <td>Count of sells: @Model.Sum(o => o.Products.Count())<td/>
+                    <td>Money: @Model.Sum(o => o.Products.Sum(p => p.Price))</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@model List<testtask_v1.Models.CustomerOrder>
+    @{ 
+        Layout = null;
+    }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MakeOrder</title>
+</head>
+<body>
+    <div>
+        <p>@Model.Count()</p>
+        @Html.ActionLink("asbdjf","Orders","Order")
+        @*<table>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.Products.Count()</td>
+                    <td>@order.Orderer.Email</td>
+                </tr>
+            }
+        </table>*@
+    </div>
+</body>
+</html>

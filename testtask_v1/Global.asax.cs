@@ -6,12 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Data.Entity;
 using testtask_v1.Models;
-using System.Net.Mail;
-using System.Net;
-using log4net;
-using log4net.Config;
-using System.Data.SqlClient;
-using System.Data;
+using testtask_v1.Binders;
 
 namespace testtask_v1
 {
@@ -27,7 +22,7 @@ namespace testtask_v1
             Logger.Logger.InitLogger();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
+            ModelBinders.Binders.Add(typeof(ShoppingCart<Product>), new CartModelBinder());
         }
 
         protected void Application_BeginRequest()

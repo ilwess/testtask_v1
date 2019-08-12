@@ -1,0 +1,60 @@
+2019-08-07 10:44:55,749  DEBUG Ball
+2019-08-07 10:44:56,078  DEBUG 1
+2019-08-07 10:47:42,864  DEBUG Pen
+2019-08-07 10:47:42,872  DEBUG 1
+2019-08-07 10:47:43,899  DEBUG Ball
+2019-08-07 10:47:43,922  DEBUG 1
+2019-08-07 10:49:36,300  DEBUG Ball
+2019-08-07 10:49:36,360  DEBUG 1
+2019-08-07 10:57:04,481  DEBUG Pen
+2019-08-07 10:57:04,488  DEBUG Pen
+2019-08-07 10:57:04,699  DEBUG 1
+2019-08-07 10:57:04,700  DEBUG 1
+2019-08-07 10:59:30,346  DEBUG Plastic right leg
+2019-08-07 10:59:30,350  DEBUG 1
+2019-08-07 11:30:42,714  WARN  C:\Users\Админ\Documents\Visual Studio 2017\Projects\testtask_v1\testtask_v1\Views\Products\ShowCart.cshtml(2): error CS1002: ; expected
+2019-08-07 11:52:44,084  WARN  Последовательность не содержит элементов
+2019-08-07 12:25:08,603  WARN  Не удалось найти представление "Account" или его образец, либо ни один обработчик представлений не поддерживает места поиска. Выполнялся поиск в следующих местах:
+~/Views/Account/Account.aspx
+~/Views/Account/Account.ascx
+~/Views/Shared/Account.aspx
+~/Views/Shared/Account.ascx
+~/Views/Account/Login.master
+~/Views/Shared/Login.master
+~/Views/Account/Account.cshtml
+~/Views/Account/Account.vbhtml
+~/Views/Shared/Account.cshtml
+~/Views/Shared/Account.vbhtml
+2019-08-07 12:26:01,957  WARN  Не удалось найти представление "Account" или его образец, либо ни один обработчик представлений не поддерживает места поиска. Выполнялся поиск в следующих местах:
+~/Views/Account/Account.aspx
+~/Views/Account/Account.ascx
+~/Views/Shared/Account.aspx
+~/Views/Shared/Account.ascx
+~/Views/Account/Login.master
+~/Views/Shared/Login.master
+~/Views/Account/Account.cshtml
+~/Views/Account/Account.vbhtml
+~/Views/Shared/Account.cshtml
+~/Views/Shared/Account.vbhtml
+2019-08-07 12:29:57,017  WARN  Последовательность не содержит элементов
+2019-08-07 13:13:54,159  WARN  Последовательность не содержит элементов
+2019-08-07 13:34:46,878  WARN  Не удалось найти представление "~/Home/Index" или его образец, либо ни один обработчик представлений не поддерживает места поиска. Выполнялся поиск в следующих местах:
+~/Home/Index
+2019-08-07 13:38:13,138  WARN  Последовательность не содержит элементов
+2019-08-07 13:44:33,117  WARN  Элемент модели, переданный в словарь, имеет тип "System.Data.Entity.DbSet`1[testtask_v1.Models.CustomerOrder]", но для этого словаря требуется элемент модели типа "System.Collections.Generic.List`1[testtask_v1.Models.CustomerOrder]".
+2019-08-07 14:42:02,898  WARN  Словарь параметров содержит запись со значением NULL для параметра "StartDate" типа "System.DateTime", не допускающего значение NULL, для метода "System.Web.Mvc.ActionResult Orders(System.DateTime, System.DateTime)" в "testtask_v1.Controllers.OrderController". Необязательный параметр должен иметь ссылочный тип, тип, допускающий значение NULL, либо он должен быть объявлен как необязательный параметр.
+Имя параметра: parameters
+2019-08-07 14:59:57,315  WARN  Словарь параметров содержит запись со значением NULL для параметра "StartDate" типа "System.DateTime", не допускающего значение NULL, для метода "System.Web.Mvc.ActionResult Orders(System.DateTime, System.DateTime)" в "testtask_v1.Controllers.OrderController". Необязательный параметр должен иметь ссылочный тип, тип, допускающий значение NULL, либо он должен быть объявлен как необязательный параметр.
+Имя параметра: parameters
+2019-08-07 15:00:18,452  WARN  Словарь параметров содержит запись со значением NULL для параметра "StartDate" типа "System.DateTime", не допускающего значение NULL, для метода "System.Web.Mvc.ActionResult Orders(System.DateTime, System.DateTime)" в "testtask_v1.Controllers.OrderController". Необязательный параметр должен иметь ссылочный тип, тип, допускающий значение NULL, либо он должен быть объявлен как необязательный параметр.
+Имя параметра: parameters
+2019-08-07 15:10:47,405  WARN  Ссылка на объект не указывает на экземпляр объекта.
+2019-08-07 15:14:27,275  WARN  Словарь параметров содержит запись со значением NULL для параметра "StartDate" типа "System.DateTime", не допускающего значение NULL, для метода "System.Web.Mvc.ActionResult Orders(System.DateTime, System.DateTime)" в "testtask_v1.Controllers.OrderController". Необязательный параметр должен иметь ссылочный тип, тип, допускающий значение NULL, либо он должен быть объявлен как необязательный параметр.
+Имя параметра: parameters
+2019-08-07 16:48:25,723  WARN  Ссылка на объект не указывает на экземпляр объекта.
+2019-08-07 16:52:59,714  WARN  Последовательность не содержит элементов
+2019-08-07 17:40:35,115  WARN  Последовательность не содержит элементов
+2019-08-07 17:40:36,215  WARN  Последовательность не содержит элементов
+2019-08-07 18:08:04,471  WARN  Cannot drop database "PRODUCTCONTEXT_fbd27a837e8847198fd9c3a304378606" because it is currently in use.
+2019-08-07 18:10:19,219  WARN  Cannot drop database "PRODUCTCONTEXT_fbd27a837e8847198fd9c3a304378606" because it is currently in use.
+2019-08-07 18:29:45,386  WARN  Cannot drop database "PRODUCTCONTEXT_fbd27a837e8847198fd9c3a304378606" because it is currently in use.

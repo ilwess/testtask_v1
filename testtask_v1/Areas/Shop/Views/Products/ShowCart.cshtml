@@ -1,0 +1,53 @@
+﻿@using testtask_v1.Models;
+@model ShoppingCart<Product>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowCart</title>
+</head>
+<body>
+    <div>
+
+        @if (Model.products.Count != 0)
+        {
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                </tr>
+                @foreach (var prod in Model)
+                {
+                    <tr>
+                        <td>@prod.Name</td>
+                        <td>@prod.Price $</td>
+                        <td>@prod.Description</td>
+                    </tr>
+                }
+                <tr>
+                    <td><strong>Total price</strong></td>
+                    <td>@Model.Sum(o => o.Price) $</td>
+                    <td>
+                        @using (Html.BeginForm("MakeOrder", "Order"))
+                        {
+                            <input type="submit" value="Make an order" />
+                        }
+                    </td>
+                </tr>
+            </table>
+        }
+        else
+        {
+            <div>
+                Shop cart is empty. Add some stuff in shop.
+            </div>
+        }
+    </div>
+</body>
+</html>

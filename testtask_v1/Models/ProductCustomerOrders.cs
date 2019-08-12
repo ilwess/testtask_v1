@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace testtask_v1.Models
 {
-    public class CustomerOrder
+    public class ProductCustomerOrders
     {
         public int Id
         {
@@ -14,19 +13,16 @@ namespace testtask_v1.Models
             set;
         }
 
-        public Customer Orderer { get; set; }
-        
-        public List<Product> Products
+        public Product Product
         {
             get;
             set;
         }
 
-        public DateTime Date
+        public CustomerOrder Order
         {
             get;
             set;
         }
-        
     }
 }
