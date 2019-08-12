@@ -25,6 +25,33 @@ namespace testtask_v1.Controllers
             }
         }
 
+        private AppRoleManager roleManager
+        {
+            get
+            {
+                return HttpContext
+                  .GetOwinContext()
+                  .GetUserManager<AppRoleManager>();
+            }
+        }
+
+        private async void AddRoles()
+        {
+            var adminRole = await roleManager.FindByIdAsync("Admin");
+            var managerRole = await roleManager.FindByIdAsync("Manager");
+            var userRole = await roleManager.FindByIdAsync("User");
+
+            if (adminRole == null)
+            {
+                adminRole = new AppRole() { Name = "Admin", };
+                managerRole = new AppRole() { Name = "Manager", };
+                userRole = new AppRole() { Name = "User", };
+                await roleManager.CreateAsync(adminRole);
+                await roleManager.CreateAsync(managerRole);
+                await roleManager.CreateAsync(userRole);
+            }
+        }
+
         private IAuthenticationManager AuthManager
         {
             get
@@ -36,7 +63,7 @@ namespace testtask_v1.Controllers
         [HttpGet]
         public ViewResult Register()
         {
-            AuthManager.SignOut();
+            AddRoles();
             return View();
         }
 

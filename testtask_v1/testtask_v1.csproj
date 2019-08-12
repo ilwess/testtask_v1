@@ -151,7 +151,7 @@
     <Compile Include="Areas\Shop\ShopAreaRegistration.cs" />
     <Compile Include="Areas\Shop\Controllers\OrderController.cs" />
     <Compile Include="Binders\CartModelBinder.cs" />
-    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppRoleManager.cs" />
     <Compile Include="Models\Customer.cs" />

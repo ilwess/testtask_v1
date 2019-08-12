@@ -20,7 +20,24 @@ namespace testtask_v1.Controllers
                     .GetOwinContext()
                     .GetUserManager<AppRoleManager>(); }
         }
-        // GET: Role
+
+        private async void AddRoles()
+        {
+            var adminRole = await roleManager.FindByIdAsync("Admin");
+            var managerRole = await roleManager.FindByIdAsync("Manager");
+            var userRole = await roleManager.FindByIdAsync("User");
+
+            if(adminRole == null)
+            {
+                adminRole = new AppRole() { Name = "Admin", };
+                managerRole = new AppRole() { Name = "Manager", };
+                userRole = new AppRole() { Name = "User", };
+                await roleManager.CreateAsync(adminRole);
+                await roleManager.CreateAsync(managerRole);
+                await roleManager.CreateAsync(userRole);
+            }
+        }
+
         public ActionResult Index()
         {
             return View(roleManager.Roles);
