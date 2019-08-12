@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using testtask_v1.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
 
 namespace testtask_v1.Controllers
 {
@@ -21,6 +22,24 @@ namespace testtask_v1.Controllers
         public ActionResult Index()
         {
             return View(roleManager.Roles);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(string roleName)
+        {
+            AppRole newRole = new AppRole()
+            {
+                Name = roleName,
+            };
+
+            await roleManager.CreateAsync(newRole);
+            return RedirectToAction("Index", "Role");
         }
     }
 }
