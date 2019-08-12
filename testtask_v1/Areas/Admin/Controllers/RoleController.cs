@@ -7,9 +7,11 @@ using testtask_v1.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
+using testtask_v1.ViewModels;
 
 namespace testtask_v1.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         private AppRoleManager roleManager
@@ -27,13 +29,20 @@ namespace testtask_v1.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(string roleName)
         {
-            AppRole newRole = new AppRole()
+            if (ModelState.IsValid)
             {
-                Name = roleName,
-            };
+                AppRole newRole = new AppRole()
+                {
+                    Name = roleName,
+                };
 
-            await roleManager.CreateAsync(newRole);
-            return RedirectToAction("Index", "Role");
+                await roleManager.CreateAsync(newRole);
+                return RedirectToAction("Index", "Role");
+            } else
+            {
+                ModelState.AddModelError("", "Oops.. Error");
+            }
+            return View("Index", "Role");
         }
     }
 }

@@ -15,12 +15,15 @@
     <div>
         @using (Html.BeginForm("Create", "Role"))
         {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
             <input type="text" name="roleName" />
             <input type="submit" value="Create" />
         }
+        <h2>All roles</h2>
         @foreach (var role in Model)
-        {
-            <h3>@role.Name</h3>
+        { 
+            <h3>    @role.Name</h3>
         }
     </div>
 </body>
