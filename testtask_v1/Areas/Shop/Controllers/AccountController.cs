@@ -13,9 +13,13 @@ using Microsoft.Owin.Security;
 using System.Security.Claims;
 using System.Net;
 using System.Net.Mail;
+using Microsoft.Owin.Security.DataProtection;
 
 namespace testtask_v1.Areas.Shop.Controllers
 {
+    
+
+
     public class AccountController : Controller
     {
         private AppManager Manager
@@ -72,7 +76,6 @@ namespace testtask_v1.Areas.Shop.Controllers
                     MailAddress from = new MailAddress(
                         "pasha.vrublevskiy20@list.ru",
                         "Email Confirmation");
-
                     MailAddress to = new MailAddress(user.Email);
 
                     MailMessage msg = new MailMessage(from, to);
