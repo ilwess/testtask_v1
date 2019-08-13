@@ -5,6 +5,9 @@ using System.Web;
 using System.Security;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
+using System.Security.Claims;
+using Microsoft.AspNet.Identity;
 
 namespace testtask_v1.Models
 {
@@ -20,6 +23,14 @@ namespace testtask_v1.Models
         public User()
         {
             RegistrationDate = DateTime.Now;
+        }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(AppManager manager)
+        {
+            var userIdentity = await manager.CreateIdentityAsync(this,
+                DefaultAuthenticationTypes.ApplicationCookie);
+
+            return userIdentity;
         }
     }
 

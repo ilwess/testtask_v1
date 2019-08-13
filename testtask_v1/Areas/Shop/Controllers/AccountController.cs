@@ -13,12 +13,10 @@ using Microsoft.Owin.Security;
 using System.Security.Claims;
 using System.Net;
 using System.Net.Mail;
-using Microsoft.Owin.Security.DataProtection;
+using System.Web.Routing;
 
 namespace testtask_v1.Areas.Shop.Controllers
 {
-    
-
 
     public class AccountController : Controller
     {
@@ -67,39 +65,29 @@ namespace testtask_v1.Areas.Shop.Controllers
                     Email = rc.Email,
                     EmailConfirmed = false,
                 };
-                
+
                 IdentityResult result = await
                     Manager.CreateAsync(user, rc.Password);
-                await Manager.AddToRoleAsync(user.Id, "User");
+                if(result.Succeeded)
+                {
+                    IdentityMessage message = new IdentityMessage();
+                    message.Subject = "Email Confirmation";
+
+                    message.Body = string.Format("To complete click: " +
+                    "<a href=\"{0}\" title=\"Confirm registration\">link</a>",
+                    Url.Action("ConfirmEmail", "Account",
+                    new { token = Manager.GenerateEmailConfirmationToken(user.Id), email = user.Email },
+                    Request.Url.Scheme
+                    ));
+                    Logger.Logger.Log.Debug(user.Id);
+                    Logger.Logger.Log.Debug(Manager.GenerateEmailConfirmationToken(user.Id));
+                    message.Destination = user.Email;
+                    await Manager.EmailService.SendAsync(message);
+                    await Manager.AddToRoleAsync(user.Id, "User");
+                }
                 if (result.Succeeded)
                 {
-                    MailAddress from = new MailAddress(
-                        "pasha.vrublevskiy20@list.ru",
-                        "Email Confirmation");
-                    MailAddress to = new MailAddress(user.Email);
-
-                    MailMessage msg = new MailMessage(from, to);
-
-                    msg.Subject = "Confirmation";
-
-                    msg.Body = string.Format("To complete click: " +
-                        "<a href=\"{0}\" title=\"Confirm registration\">{0}</a>",
-                        Url.Action("ConfirmEmail", "Account",
-                        new { Token = user.Id, Email = user.Email },
-                        Request.Url.Scheme
-                        ));
-                    msg.IsBodyHtml = true;
-
-                    SmtpClient client = new SmtpClient("smtp.mail.ru", 587);
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential(
-                        "pasha.vrublevskiy20@list.ru",
-                        "ExortinvokeR122");
-                    client.EnableSsl = true;
-                    client.Timeout = 10000;
-
-                    client.Send(msg);
+                    
 
                     using (ProductContext db = new ProductContext())
                     {
@@ -108,7 +96,7 @@ namespace testtask_v1.Areas.Shop.Controllers
                         await db.SaveChangesAsync();
                     }
 
-                    return RedirectToAction("Confirm", "Account", new { user.Email});
+                    return RedirectToAction("Confirm", "Account", new { email = user.Email});
                 } else
                 {
                     foreach (string error in result.Errors)
@@ -127,31 +115,41 @@ namespace testtask_v1.Areas.Shop.Controllers
             string token,
             string email)
         {
-            User user = await Manager.FindByIdAsync(token);
+            User user = await Manager.FindByEmailAsync(email);
             if(user != null)
             {
-                if(user.Email == email)
+                IdentityResult emailConfirmRes = await Manager.ConfirmEmailAsync(user.Id, token);
+                if (emailConfirmRes.Succeeded)
                 {
-                    user.EmailConfirmed = true;
-                    await Manager.UpdateAsync(user);
-                    ClaimsIdentity claims = await Manager.CreateIdentityAsync(
-                        user,
-                        DefaultAuthenticationTypes.ApplicationCookie);
-                    AuthManager.SignOut();
-                    AuthManager.SignIn(new AuthenticationProperties()
+                    if (user.Email == email)
                     {
-                        IsPersistent = true,
-                    }, claims);
+                        user.EmailConfirmed = true;
+                        await Manager.UpdateAsync(user);
+                        ClaimsIdentity claims = await Manager.CreateIdentityAsync(
+                            user,
+                            DefaultAuthenticationTypes.ApplicationCookie);
+                        AuthManager.SignOut();
+                        AuthManager.SignIn(new AuthenticationProperties()
+                        {
+                            IsPersistent = true,
+                        }, claims);
 
-                    return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Confirm", "Account", user.Email);
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("Confirm", "Account", new { email = user.Email});
+                    var res = await Manager.DeleteAsync(user);
+                    return RedirectToAction("Register", "Account");
                 }
             }
             else
             {
+                Logger.Logger.Log.Debug("null");
                 return RedirectToAction("Register", "Account");
             }
         }
@@ -193,7 +191,7 @@ namespace testtask_v1.Areas.Shop.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Confirm", "Account");
+                        return View("Confirm", "Account", customer.Email);
                     }
                 }
                 ViewBag.CurrUrl = currUrl;

@@ -156,6 +156,7 @@
     <Compile Include="Models\AppRoleManager.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerOrder.cs" />
+    <Compile Include="Models\IdentityEmailService.cs" />
     <Compile Include="Models\InfoUser.cs" />
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\PhoneUser.cs" />

@@ -1,0 +1,35 @@
+2019-08-12 17:59:49,403  WARN  Ќе удалось найти представление "Login" или его образец, либо ни один обработчик представлений не поддерживает места поиска. ¬ыполн€лс€ поиск в следующих местах:
+~/Views/Account/Login.aspx
+~/Views/Account/Login.ascx
+~/Views/Shared/Login.aspx
+~/Views/Shared/Login.ascx
+~/Views/Account/Login.cshtml
+~/Views/Account/Login.vbhtml
+~/Views/Shared/Login.cshtml
+~/Views/Shared/Login.vbhtml
+2019-08-12 18:09:24,576  WARN  Ќе удалось найти представление "List" или его образец, либо ни один обработчик представлений не поддерживает места поиска. ¬ыполн€лс€ поиск в следующих местах:
+~/Views/Products/List.aspx
+~/Views/Products/List.ascx
+~/Views/Shared/List.aspx
+~/Views/Shared/List.ascx
+~/Views/Products/List.cshtml
+~/Views/Products/List.vbhtml
+~/Views/Shared/List.cshtml
+~/Views/Shared/List.vbhtml
+2019-08-12 18:14:33,856  WARN  Ќе удалось найти представление "pasha.vrublevskiy20@list.ru" или его образец, либо ни один обработчик представлений не поддерживает места поиска. ¬ыполн€лс€ поиск в следующих местах:
+~/Areas/Shop/Views/Account/pasha.vrublevskiy20@list.ru.aspx
+~/Areas/Shop/Views/Account/pasha.vrublevskiy20@list.ru.ascx
+~/Areas/Shop/Views/Shared/pasha.vrublevskiy20@list.ru.aspx
+~/Areas/Shop/Views/Shared/pasha.vrublevskiy20@list.ru.ascx
+~/Views/Account/pasha.vrublevskiy20@list.ru.aspx
+~/Views/Account/pasha.vrublevskiy20@list.ru.ascx
+~/Views/Shared/pasha.vrublevskiy20@list.ru.aspx
+~/Views/Shared/pasha.vrublevskiy20@list.ru.ascx
+~/Areas/Shop/Views/Account/pasha.vrublevskiy20@list.ru.cshtml
+~/Areas/Shop/Views/Account/pasha.vrublevskiy20@list.ru.vbhtml
+~/Areas/Shop/Views/Shared/pasha.vrublevskiy20@list.ru.cshtml
+~/Areas/Shop/Views/Shared/pasha.vrublevskiy20@list.ru.vbhtml
+~/Views/Account/pasha.vrublevskiy20@list.ru.cshtml
+~/Views/Account/pasha.vrublevskiy20@list.ru.vbhtml
+~/Views/Shared/pasha.vrublevskiy20@list.ru.cshtml
+~/Views/Shared/pasha.vrublevskiy20@list.ru.vbhtml
