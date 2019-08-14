@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace testtask_v1.Models
+namespace Domain.Entities
 {
     public class Customer
     {
