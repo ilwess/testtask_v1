@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using testtask_v1.ViewModels;
+using Domain.Entities;
 
 
 namespace testtask_v1.Models

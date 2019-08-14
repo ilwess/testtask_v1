@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Concrete
 {
-    class Repository<TModel> :
+    public class Repository<TModel> :
         IRepository<TModel> 
         where TModel : class
     {
@@ -21,16 +22,9 @@ namespace Domain.Concrete
             db = context;
             set = context.Set<TModel>();
         }
-
-        public async Task AddAsync(TModel model)
-        {
-            set.Add(model);
-            await db.SaveChangesAsync();
-        }
         public void Add(TModel model)
         {
             set.Add(model);
-            db.SaveChanges();
         }
 
         public IEnumerable<TModel> Get()
@@ -39,19 +33,29 @@ namespace Domain.Concrete
         }
         public IEnumerable<TModel> Get(Func<TModel, bool> predicate)
         {
-            return set.AsNoTracking().Where(predicate).ToList();
+            return set.AsNoTracking().Where(predicate);
         }
 
         public void Remove(TModel model)
         {
             set.Remove(model);
-            db.SaveChanges();
         }
 
         public void Update(TModel model)
         {
+            ShopContext sc = new ShopContext();
+            Product p = new Product();
             db.Entry(model).State = EntityState.Modified;
-            db.SaveChanges();
+        }
+
+        public TModel Find(int id)
+        {
+            return set.Find(id);
+        }
+
+        public async Task<TModel> FindAsync(int id)
+        {
+            return await set.FindAsync(id);
         }
     }
 }

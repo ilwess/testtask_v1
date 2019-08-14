@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using testtask_v1.Models;
+using Domain.Entities;
 
 namespace testtask_v1.Binders
 {

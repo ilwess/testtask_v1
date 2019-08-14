@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web.Routing;
 using System.Web.Mvc;
 using Ninject;
+using Domain.Abstract;
+using Domain.Concrete;
+using Domain.Entities;
 
 namespace testtask_v1.Infrastructure
 {
@@ -28,7 +31,11 @@ namespace testtask_v1.Infrastructure
 
         private void AddBindings()
         {
-            
+            ninjectKernel.Bind<IUnitOfWork>()
+                .To<UnitOfWork>();
+
+            ninjectKernel.Bind<ShopContext>()
+                .To<ShopContext>();
         }
     }
 }

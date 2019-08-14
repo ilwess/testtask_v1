@@ -14,6 +14,8 @@ using System.Security.Claims;
 using System.Net;
 using System.Net.Mail;
 using System.Web.Routing;
+using Domain.Abstract;
+using Domain.Entities;
 
 namespace testtask_v1.Areas.Shop.Controllers
 {
@@ -27,7 +29,6 @@ namespace testtask_v1.Areas.Shop.Controllers
                 return HttpContext.GetOwinContext().GetUserManager<AppManager>();
             }
         }
-
         private AppRoleManager roleManager
         {
             get
@@ -37,9 +38,6 @@ namespace testtask_v1.Areas.Shop.Controllers
                   .GetUserManager<AppRoleManager>();
             }
         }
-
-       
-
         private IAuthenticationManager AuthManager
         {
             get
@@ -47,9 +45,15 @@ namespace testtask_v1.Areas.Shop.Controllers
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
+        private IUnitOfWork unitOfWork;
+
+        public AccountController(IUnitOfWork uow)
+        {
+            unitOfWork = uow;
+        }
 
         [HttpGet]
-        public async Task<ViewResult> Register()
+        public ViewResult Register()
         {
             return View();
         }
@@ -87,14 +91,9 @@ namespace testtask_v1.Areas.Shop.Controllers
                 }
                 if (result.Succeeded)
                 {
-                    
-
-                    using (ProductContext db = new ProductContext())
-                    {
-                        Customer customer = new Customer(user.Email, user.PhoneNumber);
-                        db.Customers.Add(customer);
-                        await db.SaveChangesAsync();
-                    }
+                    Customer customer = new Customer(user.Email, user.PhoneNumber);
+                    unitOfWork.Customers.Add(customer);
+                    await unitOfWork.CommitAsync();
 
                     return RedirectToAction("Confirm", "Account", new { email = user.Email});
                 } else

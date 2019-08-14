@@ -5,16 +5,23 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using testtask_v1.Models;
+using Domain.Abstract;
+using Domain.Entities;
 
 namespace testtask_v1.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
-        ProductContext db = new ProductContext();
+        private IUnitOfWork unitOfWork;
+
+        public AdminController(IUnitOfWork unitOfWork)
+        {
+            this.unitOfWork = unitOfWork;
+        }
         // GET: Admin/Admin
         public ActionResult List()
         {
-            return View(db.Prods.ToList());
+            return View(unitOfWork.Products.Get().ToList());
         }
 
         [HttpGet]
@@ -26,30 +33,31 @@ namespace testtask_v1.Areas.Admin.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(Product prod)
         {
-            db.Prods.Add(prod);
-            await db.SaveChangesAsync();
+            unitOfWork.Products.Add(prod);
+            await unitOfWork.CommitAsync();
             return RedirectToAction("List", "Admin");
         }
 
         [HttpPost]
         public async Task<ActionResult> DeleteProduct(int prodId)
         {
-            Product prod = db.Prods.Where(p => p.Id == prodId).FirstOrDefault();
-            db.Entry(prod)
-                .Collection(c => c.Orders)
-                .Load();
+            Product prod = unitOfWork.Products.Get(p => p.Id == prodId).FirstOrDefault();
+            
             if (prod != null)
             {
-                db.Prods.Remove(prod);
-                await db.SaveChangesAsync();
+                unitOfWork.Products.Remove(prod);
+                await unitOfWork.CommitAsync();
             }
             return RedirectToAction("List", "Admin");
         }
+
         [Authorize(Roles = "Manager")]
         [HttpGet]
         public ActionResult EditProduct(int prodId)
         {
-            Product prodToEdit =  db.Prods.Where(p => p.Id == prodId).FirstOrDefault();
+            Product prodToEdit = unitOfWork
+                .Products
+                .Get(p => p.Id == prodId).FirstOrDefault();
             return View(prodToEdit);
         }
 
@@ -58,11 +66,13 @@ namespace testtask_v1.Areas.Admin.Controllers
             int prodId, string newName,
             double newPrice, string newDescription)
         {
-            Product prodToEdit = await db.Prods.FindAsync(prodId);
+            Product prodToEdit = 
+                await unitOfWork.Products.FindAsync(prodId);
             prodToEdit.Name = newName;
             prodToEdit.Price = newPrice;
             prodToEdit.Description = newDescription;
-            await db.SaveChangesAsync();
+            unitOfWork.Products.Update(prodToEdit);
+            await unitOfWork.CommitAsync();
             return RedirectToAction("List", "Admin");
         }
     }

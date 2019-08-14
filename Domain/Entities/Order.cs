@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace testtask_v1.Models
+namespace Domain.Entities
 {
     public class Order
     {
@@ -15,9 +15,9 @@ namespace testtask_v1.Models
             set;
         }
 
-        public Customer Orderer { get; set; }
+        public virtual Customer Orderer { get; set; }
 
-        public List<Product> Products
+        public virtual List<Product> Products
         {
             get;
             set;

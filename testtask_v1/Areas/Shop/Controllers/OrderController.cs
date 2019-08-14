@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Domain.Abstract;
+using Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
@@ -13,7 +15,12 @@ namespace testtask_v1.Areas.Shop.Controllers
 {
     public class OrderController : Controller
     {
-        ProductContext db = new ProductContext();
+        IUnitOfWork unitOfWork;
+
+        public OrderController(IUnitOfWork uow)
+        {
+            unitOfWork = uow;
+        }
         // GET: Order
         public ActionResult Index()
         {
@@ -22,11 +29,13 @@ namespace testtask_v1.Areas.Shop.Controllers
 
         public async Task<ActionResult> MakeOrder()
         {
-            Customer customer = db.Customers
-                    .Single(o => o.Email == User.Identity.Name);
+            Customer customer = unitOfWork
+                .Customers
+                .Get()
+                .Single(o => o.Email == User.Identity.Name);
 
            
-            CustomerOrder newOrder = new CustomerOrder()
+            Order newOrder = new Order()
             {
                 Orderer = customer,
                 Products = ((ShoppingCart<Product>)Session["Cart"]).products,
@@ -35,26 +44,26 @@ namespace testtask_v1.Areas.Shop.Controllers
             //newOrder.Products = new List<Product>(((ShoppingCart<Product>)Session["Cart"]).products.Count());
             //Array.Copy(((ShoppingCart<Product>)Session["Cart"]).products, newOrder.Products, ((ShoppingCart<Product>)Session["Cart"]).products.Count());
 
-            db.Orders.Add(newOrder);
-            db.SaveChanges();
-            var ss = db.Orders.ToList();
-            return View(ss);
+            unitOfWork.Orders.Add(newOrder);
+            await unitOfWork.CommitAsync();
+            return View();
         }
 
         [HttpGet]
         public ActionResult Orders()
         {
-            return View(db.Orders.
-                Include(o => o.Products).
-                Include(o => o.Orderer).
-                ToList());
+            return View(unitOfWork.Orders
+                .Get()
+                .ToList());
         }
 
         [HttpPost]
         public ActionResult Orders(DateTime StartDate, DateTime EndDate)
         {
-            IEnumerable<CustomerOrder> orders;
-            orders = db.Orders.Include(o => o.Products).Include(o=>o.Orderer).ToList<CustomerOrder>().Where(o => ((o.Date >= StartDate) && (o.Date <= EndDate)));
+            IEnumerable<Order> orders;
+            orders = unitOfWork.Orders
+                .Get(o => ((o.Date >= StartDate) && (o.Date <= EndDate)))
+                .ToList();
             return View(orders);
         }
 
@@ -67,11 +76,10 @@ namespace testtask_v1.Areas.Shop.Controllers
         [HttpPost]
         public ActionResult OrdersByCustomer(string customerName)
         {
-            IEnumerable<CustomerOrder> customerOrders = 
-                db.Orders
-                .Include(o => o.Orderer)
-                .Include(o => o.Products)
-                .Where(o => o.Orderer.Email == customerName);
+            IEnumerable<Order> customerOrders = 
+                unitOfWork
+                .Orders
+                .Get(o => o.Orderer.Email == customerName);
             return View(customerOrders);
         }
     }

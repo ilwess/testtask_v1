@@ -34,7 +34,7 @@ namespace Domain.Entities
             set;
         }
 
-        public List<Order> Orders
+        public virtual List<Order> Orders
         {
             get;
             set;
