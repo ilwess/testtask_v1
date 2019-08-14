@@ -27,7 +27,11 @@ namespace testtask_v1
             Logger.Logger.InitLogger();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            ModelBinders.Binders.Add(typeof(ShoppingCart<Product>), new CartModelBinder());
+            ModelBinders.Binders.Add(
+                typeof(ShoppingCart<Product>),
+                new CartModelBinder());
+            ControllerBuilder.Current.SetControllerFactory(
+                new Infrastructure.NinjectControllerFactory());
         }
 
         protected void Application_BeginRequest()
