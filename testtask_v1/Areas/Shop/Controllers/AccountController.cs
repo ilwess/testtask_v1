@@ -29,7 +29,7 @@ namespace testtask_v1.Areas.Shop.Controllers
                 return HttpContext.GetOwinContext().GetUserManager<AppManager>();
             }
         }
-        private AppRoleManager roleManager
+        private AppRoleManager RoleManager
         {
             get
             {
@@ -80,11 +80,11 @@ namespace testtask_v1.Areas.Shop.Controllers
                     message.Body = string.Format("To complete click: " +
                     "<a href=\"{0}\" title=\"Confirm registration\">link</a>",
                     Url.Action("ConfirmEmail", "Account",
-                    new { token = Manager.GenerateEmailConfirmationToken(user.Id), email = user.Email },
+                    new {
+                        token = Manager.GenerateEmailConfirmationToken(user.Id),
+                        email = user.Email },
                     Request.Url.Scheme
                     ));
-                    Logger.Logger.Log.Debug(user.Id);
-                    Logger.Logger.Log.Debug(Manager.GenerateEmailConfirmationToken(user.Id));
                     message.Destination = user.Email;
                     await Manager.EmailService.SendAsync(message);
                     await Manager.AddToRoleAsync(user.Id, "User");
@@ -95,7 +95,10 @@ namespace testtask_v1.Areas.Shop.Controllers
                     unitOfWork.Customers.Add(customer);
                     await unitOfWork.CommitAsync();
 
-                    return RedirectToAction("Confirm", "Account", new { email = user.Email});
+                    return RedirectToAction(
+                        "Confirm",
+                        "Account",
+                        new { email = user.Email});
                 } else
                 {
                     foreach (string error in result.Errors)
@@ -117,7 +120,8 @@ namespace testtask_v1.Areas.Shop.Controllers
             User user = await Manager.FindByEmailAsync(email);
             if(user != null)
             {
-                IdentityResult emailConfirmRes = await Manager.ConfirmEmailAsync(user.Id, token);
+                IdentityResult emailConfirmRes =
+                    await Manager.ConfirmEmailAsync(user.Id, token);
                 if (emailConfirmRes.Succeeded)
                 {
                     if (user.Email == email)
@@ -208,9 +212,11 @@ namespace testtask_v1.Areas.Shop.Controllers
         [Authorize]
         public async Task<ViewResult> Info()
         {
-            InfoUser info = new InfoUser();
-            info.Email = await Manager.GetEmailAsync(User.Identity.GetUserId());
-            info.Phone = await Manager.GetPhoneNumberAsync(User.Identity.GetUserId());
+            InfoUser info = new InfoUser
+            {
+                Email = await Manager.GetEmailAsync(User.Identity.GetUserId()),
+                Phone = await Manager.GetPhoneNumberAsync(User.Identity.GetUserId())
+            };
             return View(info);
         }
 

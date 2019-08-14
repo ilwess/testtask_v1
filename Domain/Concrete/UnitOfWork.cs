@@ -25,27 +25,24 @@ namespace Domain.Concrete
         {
             get
             {
-                return productRepos == null 
-                    ? new Repository<Product>(db)
-                    : productRepos;
+                return productRepos ?? new Repository<Product>(db)
+;
             }
         }
         public IRepository<Order> Orders
         {
             get
             {
-                return orderRepos == null
-                    ? new Repository<Order>(db)
-                    : orderRepos;
+                return orderRepos ?? new Repository<Order>(db)
+;
             }
         }
         public IRepository<Customer> Customers
         {
             get
             {
-                return customerRepos == null
-                    ? new Repository<Customer>(db)
-                    : customerRepos;
+                return customerRepos ?? new Repository<Customer>(db)
+;
             }
         }
 

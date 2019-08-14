@@ -26,14 +26,16 @@ namespace testtask_v1.Models
             msg.Body = message.Body;
             msg.IsBodyHtml = true;
 
-            SmtpClient client = new SmtpClient("smtp.mail.ru", 587);
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential(
+            SmtpClient client = new SmtpClient("smtp.mail.ru", 587)
+            {
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(
                 "pasha.vrublevskiy20@list.ru",
-                "ExortinvokeR122");
-            client.EnableSsl = true;
-            client.Timeout = 10000;
+                "ExortinvokeR122"),
+                EnableSsl = true,
+                Timeout = 10000
+            };
             client.Send(msg);
             return Task.FromResult(0);
         }

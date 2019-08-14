@@ -27,7 +27,7 @@ namespace testtask_v1
                 {
                     OnValidateIdentity = SecurityStampValidator
                     .OnValidateIdentity<AppManager, User>(
-                        validateInterval: TimeSpan.FromMinutes(2),
+                        validateInterval: TimeSpan.FromHours(3),
                         regenerateIdentity: (manager, user) =>
                         user.GenerateUserIdentityAsync(manager)),
                 }

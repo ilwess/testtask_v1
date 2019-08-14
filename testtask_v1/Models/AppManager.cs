@@ -45,7 +45,7 @@ namespace testtask_v1.Models
                     new DataProtectorTokenProvider<User>(
                         dataProtectionProvider.Create("ASP.NET Identity"))
                     {
-                        TokenLifespan = TimeSpan.FromMinutes(2),
+                        TokenLifespan = TimeSpan.FromHours(3),
                     };
 
             }
