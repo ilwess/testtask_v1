@@ -7,6 +7,7 @@ using System.Web;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Policy;
+using System.Threading;
 
 namespace testtask_v1.Models
 {
@@ -36,8 +37,12 @@ namespace testtask_v1.Models
                 EnableSsl = true,
                 Timeout = 10000
             };
-            client.Send(msg);
+            ParameterizedThreadStart start = new ParameterizedThreadStart(
+                m => client.Send((MailMessage)m));
+            Thread thread = new Thread(start);
+            thread.Start(msg);
             return Task.FromResult(0);
+            
         }
     }
 }
