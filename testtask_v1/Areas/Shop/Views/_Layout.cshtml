@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/style.css">
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <div class="top">
+        <input type="submit" id="cart-btn" class="button" value="Cart"/>
+    </div>
+    <div class="mid">
+        <div class="categories">
+
+        </div>
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="bot">
+
+    </div>
+</body>
+</html>

@@ -24,11 +24,11 @@ namespace testtask_v1.Areas.Shop.Controllers
             unitOfWork = uow;
         }
 
-        public ActionResult AddToCart(ShoppingCart<Product> cart, string name)
+        public void AddToCart(ShoppingCart<Product> cart, string name)
         {
             Product product = unitOfWork.Products.Get().First(o => o.Name == name);
             cart.Add(product);
-            return RedirectToAction("List", "Products");
+            //return RedirectToAction("List", "Products");
         }
 
         public ViewResult ShowCart(ShoppingCart<Product> cart)

@@ -27,7 +27,7 @@ namespace testtask_v1.Areas.Shop.Controllers
             return View();
         }
 
-        public async Task<ActionResult> MakeOrder()
+        public async Task<ActionResult> MakeOrder(ShoppingCart<Product> cart)
         {
             Customer customer = unitOfWork
                 .Customers
@@ -38,15 +38,13 @@ namespace testtask_v1.Areas.Shop.Controllers
             Order newOrder = new Order()
             {
                 Orderer = customer,
-                Products = ((ShoppingCart<Product>)Session["Cart"]).products,
+                Products = cart.products,
                 Date = DateTime.Now,
             };
-            //newOrder.Products = new List<Product>(((ShoppingCart<Product>)Session["Cart"]).products.Count());
-            //Array.Copy(((ShoppingCart<Product>)Session["Cart"]).products, newOrder.Products, ((ShoppingCart<Product>)Session["Cart"]).products.Count());
 
             unitOfWork.Orders.Add(newOrder);
             await unitOfWork.CommitAsync();
-            return View();
+            return View(newOrder);
         }
 
         [HttpGet]

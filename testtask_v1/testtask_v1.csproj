@@ -140,6 +140,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -208,6 +209,8 @@
     <Content Include="Areas\Shop\Views\Account\Info.cshtml" />
     <Content Include="Areas\Shop\Views\Account\EditNumber.cshtml" />
     <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Shop\Views\_Layout.cshtml" />
+    <Content Include="Areas\Shop\Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,7 +1,11 @@
-﻿@model IEnumerable<testtask_v1.ViewModels.ProductViewModel>
+﻿@using testtask_v1.Models;
+@using Domain.Entities;
+
+@model IEnumerable<testtask_v1.ViewModels.ProductViewModel>
+
 
 @{
-    Layout = null;
+    Page.Title = "List";
 }
 
 <!DOCTYPE html>
@@ -12,8 +16,8 @@
     <title>List</title>
 </head>
 <body>
-    <div>
-        @using(Html.BeginForm("ExportAllProducts","Products"))
+    <div class="prod-table">
+        @using (Html.BeginForm("ExportAllProducts", "Products"))
         {
             <input type="submit" value="Export all products" />
         }
@@ -24,32 +28,36 @@
                 <th>Description</th>
                 <th>Count</th>
             </tr>
-        @foreach (var prod in Model)
-        {
-            <tr>
-                <td>
-                    @prod.Name
-                </td>
-                <td>
-                    @prod.Price $
-                </td>
-                <td>
-                    @prod.Description
-                </td>
-                <td>
-                    @prod.Count
-                </td>
-                <td>
-                    @Html.Partial("ButtonAdd", prod.Name)
-                </td>
-                <td>
-                    @using (Html.BeginForm("Export", "Products"))
-                    {
-                        <input type="hidden" value="@prod.Name" name="nameOfProduct"/>
-                        <input type="submit" value="Export"/>
-                    }
-                </td>
-            </tr>
+            @foreach (var prod in Model)
+            {
+                <tr>
+                    <td>
+                        @prod.Name
+                    </td>
+                    <td>
+                        @prod.Price $
+                    </td>
+                    <td>
+                        @prod.Description
+                    </td>
+                    <td>
+                        @prod.Count
+                    </td>
+                    <td>
+                        @Html.Partial("ButtonAdd", prod.Name)
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("Export", "Products"))
+                        {
+                            <input type="hidden" value="@prod.Name" name="nameOfProduct" />
+                            <input type="submit" value="Export" />
+                        }
+                    </td>
+                    <td>
+                        <input type="hidden" id="prod-name" name="prodName" value="@prod.Name" />
+                        <input type="submit" id="add-to-cart" value="Add to cart" />
+                    </td>
+                </tr>
             }
         </table>
     </div>

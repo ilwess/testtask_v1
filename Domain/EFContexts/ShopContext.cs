@@ -5,7 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using Domain.Entities;
 
-namespace Domain.Concrete
+namespace Domain.EXContexts
 {
     public class ShopContext : DbContext
     {

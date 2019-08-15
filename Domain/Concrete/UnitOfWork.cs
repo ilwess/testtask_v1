@@ -1,5 +1,6 @@
 ﻿using Domain.Abstract;
 using Domain.Entities;
+using Domain.EXContexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,14 +12,15 @@ namespace Domain.Concrete
 {
     public class UnitOfWork : IDisposable, IUnitOfWork
     {
-        private ShopContext db = new ShopContext();
+        private ShopContext db;
         private IRepository<Product> productRepos;
         private IRepository<Order> orderRepos;
         private IRepository<Customer> customerRepos;
         private bool isDisposed = false;
 
-        public UnitOfWork()
+        public UnitOfWork(ShopContext db)
         {
+            this.db = db;
         }
 
         public IRepository<Product> Products

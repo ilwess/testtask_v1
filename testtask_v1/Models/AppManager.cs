@@ -20,21 +20,21 @@ namespace testtask_v1.Models
             AppContext db = context.Get<AppContext>();
             AppManager manager = new AppManager(new UserStore<User>(db));
             RoleManager<AppRole> rm = new RoleManager<AppRole>(new RoleStore<AppRole>(db));
-            AppRole userRole = new AppRole()
-            {
-                Name = "User",
-            };
-            AppRole adminRole = new AppRole()
-            {
-                Name = "Admin",
-            };
-            AppRole managerRole = new AppRole()
-            {
-                Name = "Manager",
-            };
-            rm.Create(userRole);
-            rm.Create(adminRole);
-            rm.Create(managerRole);
+            //AppRole userRole = new AppRole()
+            //{
+            //    Name = "User",
+            //};
+            //AppRole adminRole = new AppRole()
+            //{
+            //    Name = "Admin",
+            //};
+            //AppRole managerRole = new AppRole()
+            //{
+            //    Name = "Manager",
+            //};
+            //rm.Create(userRole);
+            //rm.Create(adminRole);
+            //rm.Create(managerRole);
             manager.EmailService = new IdentityEmailService();
 
             var dataProtectionProvider = options.DataProtectionProvider;

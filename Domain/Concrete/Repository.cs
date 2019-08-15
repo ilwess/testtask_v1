@@ -1,5 +1,6 @@
 ﻿using Domain.Abstract;
 using Domain.Entities;
+using Domain.EXContexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
