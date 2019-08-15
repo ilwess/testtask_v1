@@ -8,5 +8,39 @@ namespace BLL.DTO
 {
     class ProductDTO
     {
+        public int Id
+        {
+            get;
+            set;
+        }
+
+        public string Name
+        {
+            get;
+            set;
+        }
+
+        public double Price
+        {
+            get;
+            set;
+        }
+
+        public string Description
+        {
+            get;
+            set;
+        }
+
+        public virtual List<OrderDTO> Orders
+        {
+            get;
+            set;
+        }
+
+        public ProductDTO()
+        {
+
+        }
     }
 }

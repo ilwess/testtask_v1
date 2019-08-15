@@ -38,7 +38,5 @@ namespace Domain.Entities
             this.Email = email;
             this.PhoneNumber = phoneNumber;
         }
-
-
     }
 }

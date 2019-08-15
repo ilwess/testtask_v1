@@ -6,7 +6,29 @@ using System.Threading.Tasks;
 
 namespace BLL.DTO
 {
-    class Customer
+    class CustomerDTO
     {
+        public int Id
+        {
+            get;
+            set;
+        }
+
+        public string Email
+        {
+            get;
+            set;
+        }
+
+        public string PhoneNumber
+        {
+            get;
+            set;
+        }
+
+        public CustomerDTO()
+        {
+
+        }
     }
 }
