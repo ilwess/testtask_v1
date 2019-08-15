@@ -5,9 +5,10 @@ using System.Web.Routing;
 using System.Web.Mvc;
 using Ninject;
 using Domain.Abstract;
+using BLL.Concrete;
 using Domain.Concrete;
-using Domain.Entities;
 using Domain.EXContexts;
+using BLL.Abstract;
 
 namespace testtask_v1.Infrastructure
 {
@@ -34,18 +35,19 @@ namespace testtask_v1.Infrastructure
         {
             ninjectKernel.Bind<IUnitOfWork>()
                 .To<UnitOfWork>();
+            //ninjectKernel.Bind<IRepository<Product>>()
+            //    .To<Repository<Product>>();
 
-            ninjectKernel.Bind<IRepository<Product>>()
-                .To<Repository<Product>>();
+            //ninjectKernel.Bind<IRepository<Order>>()
+            //    .To<Repository<Order>>();
 
-            ninjectKernel.Bind<IRepository<Order>>()
-                .To<Repository<Order>>();
-
-            ninjectKernel.Bind<IRepository<Customer>>()
-                .To<Repository<Customer>>();
-
+            //ninjectKernel.Bind<IRepository<Customer>>()
+            //    .To<Repository<Customer>>();
             ninjectKernel.Bind<ShopContext>()
                 .ToSelf();
+
+            ninjectKernel.Bind<IOrderService>()
+                .To<OrderService>();
         }
     }
 }
