@@ -14,10 +14,12 @@ namespace BLL.Concrete
     public class OrderService : IOrderService
     {
         private IUnitOfWork db;
-
-        public OrderService(IUnitOfWork db)
+        private IMapper mapper;
+        
+        public OrderService(IUnitOfWork db, IMapper mapper)
         {
             this.db = db;
+            this.mapper = mapper;
         }
 
         public IEnumerable<OrderDTO> Get(Func<Order, bool> predicate)

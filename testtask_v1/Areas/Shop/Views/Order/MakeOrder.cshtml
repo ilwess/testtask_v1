@@ -1,4 +1,4 @@
-﻿@model List<Domain.Entities.Order>
+﻿@model List<BLL.DTO.OrderDTO>
     @{ 
     }
 
@@ -11,17 +11,7 @@
 </head>
 <body>
     <div>
-        <p>@Model.Count()</p>
-        @Html.ActionLink("asbdjf","Orders","Order")
-        @*<table>
-            @foreach (var order in Model)
-            {
-                <tr>
-                    <td>@order.Products.Count()</td>
-                    <td>@order.Orderer.Email</td>
-                </tr>
-            }
-        </table>*@
+        @Model.Count()
     </div>
 </body>
 </html>

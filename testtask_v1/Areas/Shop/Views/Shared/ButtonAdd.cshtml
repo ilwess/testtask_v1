@@ -1,6 +1,4 @@
-﻿@using testtask_v1.Models;
-@using Domain.Entities;
-@model string
+﻿@model string
 
 @{
     Layout = null;
@@ -17,7 +15,6 @@
     <div>
         @using (Html.BeginForm("AddToCart", "Cart"))
         {
-            <input type="hidden" value="@((ShoppingCart<Product>)Session["Cart"])" />
             <input type="hidden" value="@Model" name="name" />
             <input type="submit" value="Add to cart" />
         }

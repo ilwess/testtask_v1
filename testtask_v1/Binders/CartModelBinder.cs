@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using testtask_v1.Models;
 using Domain.Entities;
+using BLL.DTO;
 
 namespace testtask_v1.Binders
 {
@@ -15,10 +16,10 @@ namespace testtask_v1.Binders
         public object BindModel(ControllerContext controllerContext,
             ModelBindingContext bindingContext)
         {
-            ShoppingCart<Product> cart = (ShoppingCart<Product>)controllerContext.HttpContext.Session[sessionKey];
+            ShoppingCart<ProductDTO> cart = (ShoppingCart<ProductDTO>)controllerContext.HttpContext.Session[sessionKey];
             if(cart is null)
             {
-                cart = new ShoppingCart<Product>();
+                cart = new ShoppingCart<ProductDTO>();
                 controllerContext.HttpContext.Session["Cart"] = cart;
             }
             return cart;

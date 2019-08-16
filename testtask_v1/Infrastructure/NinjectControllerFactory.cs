@@ -9,6 +9,7 @@ using BLL.Concrete;
 using Domain.Concrete;
 using Domain.EXContexts;
 using BLL.Abstract;
+using AutoMapper;
 
 namespace testtask_v1.Infrastructure
 {

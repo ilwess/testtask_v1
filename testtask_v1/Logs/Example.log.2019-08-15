@@ -1,0 +1,11 @@
+2019-08-15 12:24:25,008  WARN  Ќе удалось найти страницу макета "~/Views/_ViewStart" по следующему пути: "~/Views/_ViewStart".
+2019-08-15 12:25:21,945  WARN  “ип 'ASP._Page_Views__ViewStart_cshtml' не €вл€етс€ производным от 'System.Web.WebPages.WebPageBase'.
+2019-08-15 12:31:07,893  WARN  Ќе удалось найти представление "List" или его образец, либо ни один обработчик представлений не поддерживает места поиска. ¬ыполн€лс€ поиск в следующих местах:
+~/Views/Products/List.aspx
+~/Views/Products/List.ascx
+~/Views/Shared/List.aspx
+~/Views/Shared/List.ascx
+~/Views/Products/List.cshtml
+~/Views/Products/List.vbhtml
+~/Views/Shared/List.cshtml
+~/Views/Shared/List.vbhtml
