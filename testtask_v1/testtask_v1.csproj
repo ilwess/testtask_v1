@@ -224,6 +224,10 @@
     <Folder Include="Areas\Shop\Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{b8069626-ba33-4303-928d-573f1b1e0a12}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{335e7e26-e54b-4e67-9117-0eb82fbc1b4a}</Project>
       <Name>Domain</Name>

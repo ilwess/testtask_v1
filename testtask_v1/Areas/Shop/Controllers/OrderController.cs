@@ -1,4 +1,6 @@
-﻿using Domain.Abstract;
+﻿using BLL.Abstract;
+using BLL.DTO;
+using Domain.Abstract;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,11 +17,11 @@ namespace testtask_v1.Areas.Shop.Controllers
 {
     public class OrderController : Controller
     {
-        IUnitOfWork unitOfWork;
+        IOrderService orderService;
 
-        public OrderController(IUnitOfWork uow)
+        public OrderController(IOrderService orderService)
         {
-            unitOfWork = uow;
+            this.orderService = orderService;
         }
         // GET: Order
         public ActionResult Index()
@@ -27,39 +29,36 @@ namespace testtask_v1.Areas.Shop.Controllers
             return View();
         }
 
-        public async Task<ActionResult> MakeOrder(ShoppingCart<Product> cart)
+        public async Task<ActionResult> MakeOrder(ShoppingCart<ProductDTO> cart)
         {
-            Customer customer = unitOfWork
-                .Customers
-                .Get()
-                .Single(o => o.Email == User.Identity.Name);
-
-           
-            Order newOrder = new Order()
+            CustomerDTO customer = new CustomerDTO()
             {
+                Email = User.Identity.Name,
+            };
+            OrderDTO newOrder = new OrderDTO()
+            {
+                Date = DateTime.Now,
                 Orderer = customer,
                 Products = cart.products,
-                Date = DateTime.Now,
             };
 
-            unitOfWork.Orders.Add(newOrder);
-            await unitOfWork.CommitAsync();
+            await orderService.MakeOrder(newOrder);
             return View(newOrder);
         }
 
         [HttpGet]
         public ActionResult Orders()
         {
-            return View(unitOfWork.Orders
-                .Get()
+            return View(orderService
+                .GetAll()
                 .ToList());
         }
 
         [HttpPost]
         public ActionResult Orders(DateTime StartDate, DateTime EndDate)
         {
-            IEnumerable<Order> orders;
-            orders = unitOfWork.Orders
+            IEnumerable<OrderDTO> orders;
+            orders = orderService
                 .Get(o => ((o.Date >= StartDate) && (o.Date <= EndDate)))
                 .ToList();
             return View(orders);
@@ -74,9 +73,8 @@ namespace testtask_v1.Areas.Shop.Controllers
         [HttpPost]
         public ActionResult OrdersByCustomer(string customerName)
         {
-            IEnumerable<Order> customerOrders = 
-                unitOfWork
-                .Orders
+            IEnumerable<OrderDTO> customerOrders = 
+                orderService
                 .Get(o => o.Orderer.Email == customerName);
             return View(customerOrders);
         }

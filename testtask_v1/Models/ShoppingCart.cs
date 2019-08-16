@@ -5,12 +5,12 @@ using System.Linq;
 using System.Web;
 using testtask_v1.ViewModels;
 using Domain.Entities;
-
+using BLL.DTO;
 
 namespace testtask_v1.Models
 {
     public class ShoppingCart<TProduct> : IEnumerable<TProduct>
-        where TProduct : Product
+        where TProduct : ProductDTO
     {
         public List<TProduct> products = new List<TProduct>();
         public IEnumerator<TProduct> GetEnumerator()
@@ -27,7 +27,7 @@ namespace testtask_v1.Models
         {
             if (products.Contains(prod))
             {
-                Product pr = products.Where(p => p.Name == prod.Name).Single();
+                ProductDTO pr = products.Where(p => p.Name == prod.Name).Single();
                 return;
             }
             products.Add(prod);

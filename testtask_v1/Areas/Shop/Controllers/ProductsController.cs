@@ -28,11 +28,6 @@ namespace testtask_v1.Areas.Shop.Controllers
             return "Products.Index";
         }
 
-        public string Details()
-        {
-            return "Products.Details";
-        }
-
         public ViewResult List()
         {
             var groupedProds = from p in unitOfWork.Products.Get()
