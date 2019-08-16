@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Domain.Entities;
+using BLL.DTO;
 
 namespace testtask_v1
 {
@@ -29,7 +30,7 @@ namespace testtask_v1
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             ModelBinders.Binders.Add(
-                typeof(ShoppingCart<Product>),
+                typeof(ShoppingCart<ProductDTO>),
                 new CartModelBinder());
             ControllerBuilder.Current.SetControllerFactory(
                 new Infrastructure.NinjectControllerFactory());

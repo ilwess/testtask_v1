@@ -1,4 +1,5 @@
-﻿using BLL.DTO;
+﻿using BLL.Abstract;
+using BLL.DTO;
 using Domain.Abstract;
 using Domain.Concrete;
 using Domain.Entities;
@@ -13,24 +14,23 @@ namespace testtask_v1.Areas.Shop.Controllers
 {
     public class CartController : Controller
     {
-        private IUnitOfWork unitOfWork;
-        // GET: Shop/Cart
+        private IProductService productService;
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public CartController(IUnitOfWork uow)
+        public CartController(IProductService prodService)
         {
-            unitOfWork = uow;
+            productService = prodService;
         }
 
         public ActionResult AddToCart(ShoppingCart<ProductDTO> cart, string name)
         {
             ProductDTO product = productService
-                .Products
-                .Get()
-                .First(o => o.Name == name);
+                .Get(p => p.Name == name)
+                .FirstOrDefault();
             cart.Add(product);
             return RedirectToAction("List", "Products");
         }

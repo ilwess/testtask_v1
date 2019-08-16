@@ -35,14 +35,7 @@ namespace testtask_v1.Infrastructure
         {
             ninjectKernel.Bind<IUnitOfWork>()
                 .To<UnitOfWork>();
-            //ninjectKernel.Bind<IRepository<Product>>()
-            //    .To<Repository<Product>>();
 
-            //ninjectKernel.Bind<IRepository<Order>>()
-            //    .To<Repository<Order>>();
-
-            //ninjectKernel.Bind<IRepository<Customer>>()
-            //    .To<Repository<Customer>>();
             ninjectKernel.Bind<ShopContext>()
                 .ToSelf();
 
@@ -50,6 +43,8 @@ namespace testtask_v1.Infrastructure
                 .To<OrderService>();
             ninjectKernel.Bind<IProductService>()
                 .To<ProductService>();
+            ninjectKernel.Bind<ICustomerService>()
+                .To<CustomerService>();
         }
     }
 }

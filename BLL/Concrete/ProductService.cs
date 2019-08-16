@@ -98,5 +98,15 @@ namespace BLL.Concrete
             db.Products.Remove(prodToDel);
             await db.CommitAsync();
         }
+
+        public async Task EditAsync(int prodId, string newName, double newPrice, string newDescription)
+        {
+            Product prodToEdit = await db.Products.FindAsync(prodId);
+            prodToEdit.Name = newName;
+            prodToEdit.Price = newPrice;
+            prodToEdit.Description = newDescription;
+
+            db.Products.Update(prodToEdit);
+        }
     }
 }

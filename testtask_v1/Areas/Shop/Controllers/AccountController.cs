@@ -16,6 +16,8 @@ using System.Net.Mail;
 using System.Web.Routing;
 using Domain.Abstract;
 using Domain.Entities;
+using BLL.Abstract;
+using BLL.DTO;
 
 namespace testtask_v1.Areas.Shop.Controllers
 {
@@ -45,11 +47,11 @@ namespace testtask_v1.Areas.Shop.Controllers
                 return HttpContext.GetOwinContext().Authentication;
             }
         }
-        private IUnitOfWork unitOfWork;
+        private ICustomerService customerService;
 
-        public AccountController(IUnitOfWork uow)
+        public AccountController(ICustomerService custService)
         {
-            unitOfWork = uow;
+            customerService = custService;
         }
 
         [HttpGet]
@@ -91,9 +93,12 @@ namespace testtask_v1.Areas.Shop.Controllers
                 }
                 if (result.Succeeded)
                 {
-                    Customer customer = new Customer(user.Email, user.PhoneNumber);
-                    unitOfWork.Customers.Add(customer);
-                    await unitOfWork.CommitAsync();
+                    CustomerDTO customer = new CustomerDTO()
+                    {
+                        Email = user.Email,
+                        PhoneNumber = user.PhoneNumber
+                    };
+                    await customerService.AddAsync(customer);
 
                     return RedirectToAction(
                         "Confirm",

@@ -13,6 +13,8 @@ namespace BLL.Abstract
         IEnumerable<ProductDTO> GetAll();
         IEnumerable<ProductDTO> Get(Func<Product, bool> predicate);
         Task<IEnumerable<ProductDTO>> Get(params int[] productIds);
+        Task EditAsync(int prodId, string newName,
+            double newPrice, string newDescription);
         void ExportAll();
         void Export(string prodId);
         Task AddAsync(ProductDTO newProduct);

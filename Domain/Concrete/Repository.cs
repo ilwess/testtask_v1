@@ -44,10 +44,7 @@ namespace Domain.Concrete
 
         public void Update(TModel model)
         {
-            ShopContext sc = new ShopContext();
-            Product p = new Product();
             db.Entry(model).State = EntityState.Modified;
-            
         }
 
         public TModel Find(int id)

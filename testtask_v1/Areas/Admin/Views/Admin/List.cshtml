@@ -1,5 +1,5 @@
-﻿@using testtask_v1.Models
-@model IEnumerable<Product>
+﻿@using BLL.DTO;
+@model IEnumerable<ProductDTO>
 
 @{
     Layout = null;
@@ -13,7 +13,7 @@
     <title>List</title>
 </head>
 <body>
-    <div class="admin-list"">
+    <div class="admin-list">
         @using (Html.BeginForm("Add", "Admin", FormMethod.Get))
         {
             <input type="submit" value="Add" />
