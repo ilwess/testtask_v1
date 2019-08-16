@@ -7,14 +7,16 @@ using System.Web.Mvc;
 using testtask_v1.Models;
 using Domain.Abstract;
 using Domain.Entities;
+using BLL.Abstract;
 
 namespace testtask_v1.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
         private IUnitOfWork unitOfWork;
+        private IProductService productService;
 
-        public AdminController(IUnitOfWork unitOfWork)
+        public AdminController(IUnitOfWork unitOfWork, IProductService prodService)
         {
             this.unitOfWork = unitOfWork;
         }

@@ -48,6 +48,8 @@ namespace testtask_v1.Infrastructure
 
             ninjectKernel.Bind<IOrderService>()
                 .To<OrderService>();
+            ninjectKernel.Bind<IProductService>()
+                .To<ProductService>();
         }
     }
 }

@@ -47,6 +47,7 @@ namespace Domain.Concrete
             ShopContext sc = new ShopContext();
             Product p = new Product();
             db.Entry(model).State = EntityState.Modified;
+            
         }
 
         public TModel Find(int id)
@@ -57,6 +58,16 @@ namespace Domain.Concrete
         public async Task<TModel> FindAsync(int id)
         {
             return await set.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<TModel>> FindRangeAsync(params int[] ids)
+        {
+            var items = new List<TModel>();
+            foreach(var id in ids)
+            {
+                items.Add(await set.FindAsync(id));
+            }
+            return items;
         }
     }
 }

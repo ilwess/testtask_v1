@@ -47,6 +47,7 @@
     <Compile Include="Abstract\IOrderService.cs" />
     <Compile Include="Abstract\IProductService.cs" />
     <Compile Include="Concrete\OrderService.cs" />
+    <Compile Include="Concrete\ProductService.cs" />
     <Compile Include="DTO\CustomerDTO.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
